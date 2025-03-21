@@ -2,6 +2,8 @@
 FECHA: 20/03/2025
 PROYECTO FINAL: Avance 02 con el Esquema ABBOTT*/
 
+-- CORREGIR NOMBRES APLICANDO LA NOMENCLATURA
+
 --================================== VISTAS ==================================--
 
 -- 1. Vista para mostrar materiales por estado

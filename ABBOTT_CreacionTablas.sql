@@ -2,25 +2,30 @@
 FECHA: 20/03/2025
 PROYECTO FINAL: Avance 02 con el Esquema ABBOTT*/ 
 
+-- CORREGIR NOMBRES APLICANDO LA NOMENCLATURA FIDE_NOMBRE_TB
+-- LLAVES PRIMARIAS CON LA NOMENCLATURA DE NOMBRETABLA_NOMBREATRIBUTO_PK
+-- AGREGAR LAS LLAVES COMPUESTAS Y LOS CONSTRAINTS QUE FALTAN EN ALGUNAS TABLAS
+
 /*Creacion de Tablas Parte 01*/
 
 -- TABLA ESTADO
-CREATE TABLE Estado (
-    Estado_Id NUMBER CONSTRAINT Estado_ID_PK PRIMARY KEY,
+CREATE TABLE Fide_Estado_TB (
+    Estado_Id NUMBER CONSTRAINT Estado_EstadoID_PK PRIMARY KEY,
     Descripcion VARCHAR2(50) -- Activo / Inactivo - Pendiente / En Proceso / Completada
 );
 
+DROP TABLE ESTADO;
 --============================== ROLES Y AREAS ==============================--
 
 -- TABLA TIPOS ROL
 CREATE TABLE Tipos_Rol (
-    TipoRol_Id NUMBER CONSTRAINT Tipos_Rol_ID_PK PRIMARY KEY,
+    TipoRol_Id NUMBER CONSTRAINT TiposRol_TipoRolID_PK PRIMARY KEY, 
     Nombre_Rol VARCHAR2(50) -- Administrador / Supervisor / Operador (Empleado)
 );
 
 -- TABLA ROLES
 CREATE TABLE Roles (
-    Id_Rol NUMBER CONSTRAINT Roles_ID_PK PRIMARY KEY,
+    Id_Rol NUMBER CONSTRAINT Roles_ID_PK PRIMARY KEY, 
     TipoRol_Id NUMBER REFERENCES Tipos_Rol(TipoRol_Id), -- FK Tabla Tipo Rol
     Estado_Id NUMBER REFERENCES Estado(Estado_Id) -- FK Tabla Estado
 );
@@ -63,7 +68,7 @@ CREATE TABLE Materiales (
     FOREIGN KEY (Estado_Id) REFERENCES ESTADO(Estado_Id)
 );
 
--- TABLA BODEGA MATERIAL
+-- TABLA BODEGA MATERIAL -- LLAVE COMPUESTA
 CREATE TABLE BODEGA_MATERIAL (
     Bodega_Material_Id INT,
     Bodega_Id INT,
@@ -83,7 +88,7 @@ CREATE TABLE Datos_Entregas (
     Hora TIMESTAMP
 );
 
--- TABLA ENTREGAS
+-- TABLA ENTREGAS -- LLAVE COMPUESTA
 CREATE TABLE Entregas (
     Id_Entrega NUMBER CONSTRAINT Entregas_ID_PK PRIMARY KEY,
     Id_Material NUMBER REFERENCES Materiales(Id_Material), -- FK Tabla Materiales
@@ -110,7 +115,7 @@ CREATE TABLE Empleados (
     UPI NUMBER CONSTRAINT PK_Empleados PRIMARY KEY
 );
 
--- TABLA PERSONAL -- REVISAR
+-- TABLA PERSONAL -- LLAVE COMPUESTA
 CREATE TABLE Personal (
     Id_Personal NUMBER CONSTRAINT Id_Personal_PK PRIMARY KEY,
     Id_Rol NUMBER REFERENCES Roles (Id_Rol), -- FK  Tabla Roles
@@ -151,8 +156,8 @@ CREATE TABLE TAREAS (
 
 -- TABLA INGRESOS
 CREATE TABLE INGRESOS (
-    Id_Ingreso INT,
-    Id_Material INT,
+    Id_Ingreso INT, -- LLAVE COMPUESTA
+    Id_Material INT, -- LLAVE COMPUESTA 
     UPI NUMBER,
     Estado_Id INT,
     Cantidad_Recibida INT,
