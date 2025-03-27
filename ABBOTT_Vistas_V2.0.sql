@@ -197,6 +197,3 @@ JOIN
     FIDE_ESTADO_TB e ON m.Estado_Id = e.Estado_Id;
 
 -- Para verla SELECT * FROM VISTA_MATERIALES_ESTADO;
-
-
-

@@ -76,8 +76,8 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE FUNCTION FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN (
-    P_Bodega_Id IN FIDE_BODEGA_TB.Bodega_Id%TYPE,
-    P_Id_Material IN FIDE_MATERIAL_TB.Id_Material%TYPE
+    P_Bodega_Id IN FIDE_BODEGAS_TB.Bodega_Id%TYPE,
+    P_Id_Material IN FIDE_MATERIALES_TB.Id_Material%TYPE
     ) 
     
     RETURN BOOLEAN AS

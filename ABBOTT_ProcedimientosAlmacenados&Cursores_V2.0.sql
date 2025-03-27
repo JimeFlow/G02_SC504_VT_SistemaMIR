@@ -265,7 +265,7 @@ END;
 -- 7. Mostrar los datos de una tarea por Id
 SET SERVEROUTPUT ON;
 
-CREATE OR REPLACE PROCEDURE FIDE_TAREA_TB_Mostrar_Tarea_SP (
+CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Mostrar_Tarea_SP (
     P_id_tarea        IN   NUMBER,
     P_upi             OUT  NUMBER,
     P_nombre          OUT  VARCHAR2,
@@ -285,7 +285,7 @@ BEGIN
         P_fecha_recibido,
         P_descripcion
     FROM
-        FIDE_TAREA_TB
+        FIDE_TAREAS_TB
     WHERE
         id_tarea = P_id_tarea;
 
@@ -381,18 +381,19 @@ BEGIN
     SET
         id_rol = P_nuevo_rol_id
     WHERE
-        id_upi = P_id_upi;
+        upi = P_upi;  -- Cambié 'id_upi' por 'upi' (o el nombre correcto)
 
     COMMIT;
     dbms_output.put_line('Rol de empleado ' || P_upi || ' actualizado.');
     
 EXCEPTION
     WHEN no_data_found THEN
-        dbms_output.put_line('Empleado con Id_Personal ' || P_id_upi || ' no encontrado.');
+        dbms_output.put_line('Empleado con Id_Personal ' || P_upi || ' no encontrado.');
     WHEN OTHERS THEN
-        dbms_output.put_line('Error al actualizar rol ' || sqlerrm);
+        dbms_output.put_line('Error al actualizar rol: ' || sqlerrm);
 END;
 /
+
 -- Prueba EXECUTE Actualizar_Rol_Empleado(101, 3);
 
 
@@ -571,13 +572,13 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP (
-    p_id_entrega  IN  FIDE_REGISTRO_DIARIO_TB.id_entrega%TYPE,
-    p_id_ingreso  IN  FIDE_REGISTRO_DIARIO_TB.id_ingreso%TYPE,
-    p_id_tarea    IN  FIDE_REGISTRO_DIARIO_TB.id_tarea%TYPE,
-    p_estado_id   IN  FIDE_REGISTRO_DIARIO_TB.estado_id%TYPE
+    P_id_entrega  IN  FIDE_REGISTRO_DIARIO_TB.id_entrega%TYPE,
+    P_id_ingreso  IN  FIDE_REGISTRO_DIARIO_TB.id_ingreso%TYPE,
+    P_id_tarea    IN  FIDE_REGISTRO_DIARIO_TB.id_tarea%TYPE,
+    P_estado_id   IN  FIDE_REGISTRO_DIARIO_TB.estado_id%TYPE
 ) AS
 
-    v_max_id NUMBER;
+    V_max_id NUMBER;
     CURSOR c_max_id IS
     SELECT
         nvl(MAX(id_registro), 0) + 1
@@ -595,11 +596,11 @@ BEGIN
         id_tarea,
         estado_id
     ) VALUES (
-        v_max_id,
-        p_id_entrega,
-        p_id_ingreso,
-        p_id_tarea,
-        p_estado_id
+        V_max_id,
+        P_id_entrega,
+        P_id_ingreso,
+        P_id_tarea,
+        P_estado_id
     );
 
     COMMIT;
@@ -632,7 +633,7 @@ CREATE OR REPLACE PROCEDURE FIDE_PERSONAL_TB_Listar_Empleados_SP IS
     FROM
         FIDE_PERSONAL_TB;
 
-    v_empleado c_empleados%rowtype;
+    V_empleado c_empleados%rowtype;
     
 BEGIN
     dbms_output.put_line('Lista de Empleados:');
@@ -641,15 +642,15 @@ BEGIN
         FETCH c_empleados INTO v_empleado;
         EXIT WHEN c_empleados%notfound;
         dbms_output.put_line('- ID: '
-                             || v_empleado.id_personal
+                             || V_empleado.id_personal
                              || ' - Nombre: '
-                             || v_empleado.nombre
+                             || V_empleado.nombre
                              || ' '
-                             || v_empleado.apellidos
+                             || V_empleado.apellidos
                              || ' - Contacto: '
-                             || v_empleado.datos_contacto
+                             || V_empleado.datos_contacto
                              || ', Tipo: '
-                             || v_empleado.tipo_personal);
+                             || V_empleado.tipo_personal);
 
     END LOOP;
 
@@ -683,9 +684,9 @@ CREATE OR REPLACE PROCEDURE FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP 
         cantidad_disponible <= 10;
 
     -- Variables para almacenar datos del cursor
-    v_id_material  FIDE_MATERIALES_TB.id_material%TYPE;
-    v_nombre       FIDE_MATERIALES_TB.nombre%TYPE;
-    v_cantidad     FIDE_MATERIALES_TB.cantidad_disponible%TYPE;
+    V_id_material  FIDE_MATERIALES_TB.id_material%TYPE;
+    V_nombre       FIDE_MATERIALES_TB.nombre%TYPE;
+    V_cantidad     FIDE_MATERIALES_TB.cantidad_disponible%TYPE;
 
 BEGIN
     -- Abrimos el cursor
@@ -694,18 +695,18 @@ BEGIN
     -- Recorremos cada fila del cursor
     LOOP
         FETCH c_materiales_bajo_stock INTO
-            v_id_material,
-            v_nombre,
-            v_cantidad;
+            V_id_material,
+            V_nombre,
+            V_cantidad;
         EXIT WHEN c_materiales_bajo_stock%notfound;
 
         -- Mostramos la información con DBMS_OUTPUT
         dbms_output.put_line('ID Material: '
-                             || v_id_material
+                             || V_id_material
                              || ' | Nombre: '
-                             || v_nombre
+                             || V_nombre
                              || ' | Cantidad Disponible: '
-                             || v_cantidad);
+                             || V_cantidad);
 
     END LOOP;
 
@@ -725,7 +726,7 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP (
-    p_estado_id IN INT
+    P_estado_id IN INT
 ) IS
     -- Declaramos el cursor que seleccionará las tareas de un estado específico
     CURSOR c_tareas IS
@@ -736,12 +737,12 @@ CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP (
     FROM
         FIDE_TAREAS_TB
     WHERE
-        estado_id = p_estado_id;  -- Filtramos por el estado proporcionado
+        estado_id = P_estado_id;  -- Filtramos por el estado proporcionado
     
     -- Declaramos las variables que almacenarán los valores extraídos del cursor
-    v_id_tarea     FIDE_TAREAS_TB.id_tarea%TYPE;
-    v_nombre       FIDE_TAREAS_TB.nombre%TYPE;
-    v_descripcion  FIDE_TAREAS_TB.descripcion%TYPE;
+    V_id_tarea     FIDE_TAREAS_TB.id_tarea%TYPE;
+    V_nombre       FIDE_TAREAS_TB.nombre%TYPE;
+    V_descripcion  FIDE_TAREAS_TB.descripcion%TYPE;
 
 BEGIN
     -- Abrimos el cursor para empezar a procesar las filas
@@ -751,9 +752,9 @@ BEGIN
     LOOP
         -- Extraemos los datos de la siguiente fila del cursor y los almacenamos en las variables
         FETCH c_tareas INTO
-            v_id_tarea,
-            v_nombre,
-            v_descripcion;
+            V_id_tarea,
+            V_nombre,
+            V_descripcion;
 
         -- Salimos del bucle cuando no hay más filas en el cursor
         EXIT WHEN c_tareas%notfound;
@@ -791,9 +792,9 @@ CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP IS
         estado_id = 1;
 
     -- Variables para almacenar temporalmente los valores del cursor
-    v_id_tarea  FIDE_TAREAS_TB.id_tarea%TYPE;
-    v_nombre    FIDE_TAREAS_TB.nombre%TYPE;
-    v_fecha     FIDE_TAREAS_TB.fecha_recibido%TYPE;
+    V_id_tarea  FIDE_TAREAS_TB.id_tarea%TYPE;
+    V_nombre    FIDE_TAREAS_TB.nombre%TYPE;
+    V_fecha     FIDE_TAREAS_TB.fecha_recibido%TYPE;
 
 BEGIN
     -- Abrimos el cursor
@@ -802,18 +803,18 @@ BEGIN
     -- Recorremos cada fila del cursor
     LOOP
         FETCH c_tareas_pendientes INTO
-            v_id_tarea,
-            v_nombre,
-            v_fecha;
+            V_id_tarea,
+            V_nombre,
+            V_fecha;
         EXIT WHEN c_tareas_pendientes%notfound;
 
         -- Mostramos la información con DBMS_OUTPUT
         dbms_output.put_line('Tarea ID: '
-                             || v_id_tarea
+                             || V_id_tarea
                              || ' | Nombre: '
-                             || v_nombre
+                             || V_nombre
                              || ' | Fecha Recibido: '
-                             || v_fecha);
+                             || V_fecha);
 
     END LOOP;
 
@@ -833,7 +834,7 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP (
-    p_upi IN NUMBER
+    P_upi IN NUMBER
 ) IS
 
     CURSOR c_tareas (
@@ -848,18 +849,18 @@ CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP (
     WHERE
         upi = upi;
 
-    v_tareas c_tareas%rowtype;
+    V_tareas c_tareas%rowtype;
 
 BEGIN
-    dbms_output.put_line('Tareas del empleado UPI: ' || p_upi);
+    dbms_output.put_line('Tareas del empleado UPI: ' || P_upi);
     dbms_output.put_line('--------------------------');
-    FOR v_tareas IN c_tareas(p_upi) LOOP
+    FOR V_tareas IN c_tareas(p_upi) LOOP
         dbms_output.put_line('Nombre: '
-                             || v_tareas.nombre
+                             || V_tareas.nombre
                              || ', Descripción: '
-                             || v_tareas.descripcion
+                             || V_tareas.descripcion
                              || ', Fecha: '
-                             || v_tareas.fecha_recibido);
+                             || V_tareas.fecha_recibido);
     END LOOP;
 
 END;
@@ -871,7 +872,7 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP (
-    p_destinatario IN VARCHAR2
+    P_destinatario IN VARCHAR2
 ) IS
 
     CURSOR c_entregas IS
@@ -881,27 +882,26 @@ CREATE OR REPLACE PROCEDURE FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP
         de.fecha
     FROM
         FIDE_ENTREGAS_TB e
-        JOIN materiales      m ON e.id_material = m.id_material
-        JOIN datos_entregas  de ON e.dato_entrega_id = de.dato_entrega_id
+        JOIN FIDE_MATERIALES_TB m ON e.id_material = m.id_material
+        JOIN FIDE_DATOS_ENTREGAS_TB de ON e.dato_entrega_id = de.dato_entrega_id
     WHERE
-        e.destinatario = p_destinatario;
-
-    v_entregas c_entregas%rowtype;
+        e.destinatario = P_destinatario;
 
 BEGIN
-    dbms_output.put_line('Entregas a: ' || p_destinatario);
+    dbms_output.put_line('Entregas a: ' || P_destinatario);
     dbms_output.put_line('--------------------------');
-    FOR v_entregas IN c_entregas LOOP
+    FOR V_entregas IN c_entregas LOOP
         dbms_output.put_line('Material: '
-                             || v_entregas.material
+                             || V_entregas.material
                              || ', Cantidad: '
-                             || v_entregas.cantidad_restante
+                             || V_entregas.cantidad_restante
                              || ', Fecha: '
-                             || v_entregas.fecha);
+                             || V_entregas.fecha);
     END LOOP;
 
 END;
 /
+
 -- EXECUTE listar_entregas_por_destinatario('');
 
 
@@ -909,8 +909,8 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP (
-    p_fecha_inicio  IN  DATE,
-    p_fecha_fin     IN  DATE
+    P_fecha_inicio  IN  DATE,
+    P_fecha_fin     IN  DATE
 ) IS
 
     CURSOR c_ingresos (
@@ -923,29 +923,28 @@ CREATE OR REPLACE PROCEDURE FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP (
         i.fecha_ingreso
     FROM
         FIDE_INGRESOS_TB i
-        JOIN materiales m ON i.id_material = m.id_material
+        JOIN FIDE_MATERIALES_TB m ON i.id_material = m.id_material
     WHERE
         i.fecha_ingreso BETWEEN fecha_inicio AND fecha_fin;
 
-    v_ingresos c_ingresos%rowtype;
-
 BEGIN
     dbms_output.put_line('Ingresos entre '
-                         || p_fecha_inicio
+                         || TO_CHAR(p_fecha_inicio, 'DD-MM-YYYY')
                          || ' y '
-                         || p_fecha_fin);
+                         || TO_CHAR(p_fecha_fin, 'DD-MM-YYYY'));
     dbms_output.put_line('--------------------------');
-    FOR v_ingresos IN c_ingresos(p_fecha_inicio, p_fecha_fin) LOOP
+    FOR V_ingresos IN c_ingresos(P_fecha_inicio, P_fecha_fin) LOOP
         dbms_output.put_line('Material: '
-                             || v_ingresos.material
+                             || V_ingresos.material
                              || ', Cantidad: '
-                             || v_ingresos.cantidad_recibida
+                             || V_ingresos.cantidad_recibida
                              || ', Fecha: '
-                             || v_ingresos.fecha_ingreso);
+                             || TO_CHAR(V_ingresos.fecha_ingreso, 'DD-MM-YYYY'));
     END LOOP;
 
 END;
 /
+
 -- Prueba EXECUTE listar_ingresos_por_fecha('15-ENE-2025', '20-MAR-2025');
 
 
@@ -953,7 +952,7 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP (
-    p_estado_id IN INT
+    P_estado_id IN INT
 ) IS
 
     -- Cursor que obtiene los reportes con el Estado_Id proporcionado
@@ -965,12 +964,12 @@ CREATE OR REPLACE PROCEDURE FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP (
     FROM
         FIDE_REPORTES_TB
     WHERE
-        estado_id = p_estado_id;
+        estado_id = P_estado_id;
 
     -- Variables para almacenar los datos del cursor
-    v_id_reporte   FIDE_REPORTES_TB.id_reporte%TYPE;
-    v_descripcion  FIDE_REPORTES_TB.descripcion%TYPE;
-    v_id_usuario   FIDE_REPORTES_TB.id_usuario%TYPE;
+    V_id_reporte   FIDE_REPORTES_TB.id_reporte%TYPE;
+    V_descripcion  FIDE_REPORTES_TB.descripcion%TYPE;
+    V_id_usuario   FIDE_REPORTES_TB.id_usuario%TYPE;
 
 BEGIN
     -- Abrimos el cursor
@@ -979,18 +978,18 @@ BEGIN
     -- Recorremos los resultados del cursor
     LOOP
         FETCH c_reportes INTO
-            v_id_reporte,
-            v_descripcion,
-            v_id_usuario;
+            V_id_reporte,
+            V_descripcion,
+            V_id_usuario;
         EXIT WHEN c_reportes%notfound;
 
         -- Mostramos la información por consola (DBMS_OUTPUT)
         dbms_output.put_line('Reporte ID: '
-                             || v_id_reporte
+                             || V_id_reporte
                              || ' | Usuario ID: '
-                             || v_id_usuario
+                             || V_id_usuario
                              || ' | Descripción: '
-                             || v_descripcion);
+                             || V_descripcion);
 
     END LOOP;
 
@@ -1010,6 +1009,7 @@ CREATE OR REPLACE PROCEDURE FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP (
     p_nuevos_datos_contacto  IN  VARCHAR2
 ) IS
 
+    -- Cursor explícito con FOR UPDATE para bloquear filas antes de actualizarlas
     CURSOR c_personal IS
     SELECT
         id_personal,
@@ -1018,27 +1018,22 @@ CREATE OR REPLACE PROCEDURE FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP (
         FIDE_PERSONAL_TB
     WHERE
         tipo_personal = p_tipo
-    FOR UPDATE; -- Importante para el bloqueo de filas
-    v_personal c_personal%rowtype;
+    FOR UPDATE;
 
 BEGIN
-    OPEN c_personal;
-    LOOP
-        FETCH c_personal INTO v_personal;
-        EXIT WHEN c_personal%notfound;
-        UPDATE personal
-        SET
-            datos_contacto = p_nuevos_datos_contacto
-        WHERE
-            id_personal = v_personal.id_personal;
+    -- Bucle implícito para recorrer el cursor (más limpio que abrir/cerrar manualmente)
+    FOR v_personal IN c_personal LOOP
+        UPDATE FIDE_PERSONAL_TB
+        SET datos_contacto = p_nuevos_datos_contacto
+        WHERE id_personal = v_personal.id_personal;
 
         dbms_output.put_line('Contacto actualizado para Id_Personal ' || v_personal.id_personal);
     END LOOP;
 
-    CLOSE c_personal;
     COMMIT;
 END;
 /
+
 -- Prueba EXECUTE actualizar_contacto_personal('Empleado', 'nuevos_contacto@email.com');
 
 
@@ -1047,63 +1042,50 @@ SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP IS
 
-    CURSOR c_tareas (
-        fecha_limite DATE
-    ) IS
-    SELECT
-        id_tarea
-    FROM
-        FIDE_TAREAS_TB
-    WHERE
-            fecha_recibido >= fecha_limite
-        AND estado_id != (
-            SELECT
-                estado_id
-            FROM
-                FIDE_ESTADOS_TB
-            WHERE
-                descripcion = 'En Proceso'
-        )
-    FOR UPDATE;
-
-    v_tarea              c_tareas%rowtype;
+    -- Declarar variables
     v_estado_en_proceso  NUMBER;
+    v_fecha_limite       DATE := SYSDATE - 7;
+
+    -- Declarar cursor directamente usando la variable v_fecha_limite
+    CURSOR c_tareas IS
+        SELECT id_tarea
+        FROM FIDE_TAREAS_TB
+        WHERE fecha_recibido >= v_fecha_limite
+          AND estado_id != (
+              SELECT estado_id
+              FROM FIDE_ESTADO_TB
+              WHERE descripcion = 'En Proceso'
+          )
+        FOR UPDATE;
+
+    v_tarea c_tareas%ROWTYPE;
 
 BEGIN
-  -- Obtener el Estado_Id para "En Proceso"
-    SELECT
-        estado_id
+    -- Obtener el ID del estado 'En Proceso'
+    SELECT estado_id
     INTO v_estado_en_proceso
-    FROM
-        FIDE_ESTADOS_TB
-    WHERE
-        descripcion = 'En Proceso';
+    FROM FIDE_ESTADO_TB
+    WHERE descripcion = 'En Proceso';
 
-  -- Calcular la fecha límite (una semana atrás)
-    DECLARE
-        fecha_limite DATE := sysdate - 7;
-    
-    BEGIN
-        OPEN c_tareas(fecha_limite);
-        LOOP
-            FETCH c_tareas INTO v_tarea;
-            EXIT WHEN c_tareas%notfound;
-            UPDATE FIDE_TAREAS_TB
-            SET
-                estado_id = v_estado_en_proceso
-            WHERE
-                id_tarea = v_tarea.id_tarea;
+    -- Abrir cursor y procesar tareas
+    OPEN c_tareas;
+    LOOP
+        FETCH c_tareas INTO v_tarea;
+        EXIT WHEN c_tareas%NOTFOUND;
 
-            dbms_output.put_line('Tarea ' || v_tarea.id_tarea
-                                 || ' marcada como EN PROCESO.');
-        END LOOP;
+        UPDATE FIDE_TAREAS_TB
+        SET estado_id = v_estado_en_proceso
+        WHERE id_tarea = v_tarea.id_tarea;
 
-        CLOSE c_tareas;
-        COMMIT;
-    END;
+        DBMS_OUTPUT.PUT_LINE('Tarea ' || v_tarea.id_tarea || ' marcada como EN PROCESO.');
+    END LOOP;
+    CLOSE c_tareas;
 
+    COMMIT;
 END;
 /
+
+
 -- Prueba EXECUTE actualizar_tareas_en_proceso;
 
 
@@ -1111,61 +1093,31 @@ END;
 SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP IS
-
-    CURSOR c_tareas (
-        fecha_limite DATE
-    ) IS
-    SELECT
-        id_tarea
-    FROM
-        FIDE_TAREAS_TB
-    WHERE
-            fecha_recibido < fecha_limite
-        AND estado_id != (
-            SELECT
-                estado_id
-            FROM
-                FIDE_ESTADOS_TB
-            WHERE
-                descripcion = 'Completada'
-        )
-    FOR UPDATE;
-
-    v_tarea              c_tareas%rowtype;
     v_estado_completada  NUMBER;
-
+    v_fecha_limite       DATE := SYSDATE - 7;
 BEGIN
-  -- Obtener el Estado_Id para "Completada"
-    SELECT
-        estado_id
+    -- Obtener el Estado_Id para 'Completada'
+    SELECT estado_id
     INTO v_estado_completada
-    FROM
-        FIDE_ESTADOS_TB
-    WHERE
-        descripcion = 'Completada';
+    FROM FIDE_ESTADO_TB
+    WHERE descripcion = 'Completada';
 
-  -- Calcular la fecha límite (una semana atrás)
-    DECLARE
-        fecha_limite DATE := sysdate - 7;
-    BEGIN
-        OPEN c_tareas(fecha_limite);
-        LOOP
-            FETCH c_tareas INTO v_tarea;
-            EXIT WHEN c_tareas%notfound;
-            UPDATE FIDE_TAREAS_TB
-            SET
-                estado_id = v_estado_completada
-            WHERE
-                id_tarea = v_tarea.id_tarea;
+    -- Recorremos directamente sin declarar cursor externo
+    FOR v_tarea IN (
+        SELECT id_tarea
+        FROM FIDE_TAREAS_TB
+        WHERE fecha_recibido < v_fecha_limite
+          AND estado_id != v_estado_completada
+        FOR UPDATE
+    ) LOOP
+        UPDATE FIDE_TAREAS_TB
+        SET estado_id = v_estado_completada
+        WHERE id_tarea = v_tarea.id_tarea;
 
-            dbms_output.put_line('Tarea ' || v_tarea.id_tarea
-                                 || ' marcada como COMPLETADA.');
-        END LOOP;
+        DBMS_OUTPUT.PUT_LINE('Tarea ' || v_tarea.id_tarea || ' marcada como COMPLETADA.');
+    END LOOP;
 
-        CLOSE c_tareas;
-        COMMIT;
-    END;
-
+    COMMIT;
 END;
 /
 -- Prueba EXECUTE actualizar_tareas_completadas;
@@ -1301,7 +1253,7 @@ CREATE OR REPLACE PROCEDURE FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP AS
             SELECT
                 estado_id
             FROM
-                FIDE_ESTADOS_TB
+                FIDE_ESTADO_TB
             WHERE
                 descripcion = 'Pendiente'
         );
@@ -1390,6 +1342,4 @@ END;
 
     
 
-    
-    
     
