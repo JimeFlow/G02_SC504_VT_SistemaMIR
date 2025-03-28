@@ -1,28 +1,26 @@
 <?php
+// inventario.php
+require_once 'conexion.php';
 
-require_once 'config/db.php';
+$conex = new Conexion();
+$getConection = $conex->Conectar();
 
-// Consulta para obtener registros del inventario con información del material y bodega
-$query = "SELECT inv.Id_Inventario,
-                 mat.Nombre AS NombreMaterial,
-                 bod.Sucursal AS Bodega,
-                 mat.Fecha_Vencimiento,
-                 mat.Cantidad_Disponible AS Cantidad
+// Consulta de inventario (ejemplo con join)
+$query = "SELECT inv.Id_Inventario AS id,
+                 mat.Nombre AS nombre,
+                 bod.Sucursal AS bodega,
+                 mat.Fecha_Vencimiento AS fecha_vencimiento,
+                 mat.Cantidad_Disponible AS cantidad
           FROM FIDE_INVENTARIO_TB inv
           JOIN FIDE_MATERIALES_TB mat ON inv.Id_Material = mat.Id_Material
-          JOIN FIDE_BODEGAS_TB bod ON inv.Id_Usuario = bod.Bodega_Id"; // Ajusta la relación según corresponda
-$stmt = oci_parse($conn, $query);
-oci_execute($stmt);
-
-$inventario = [];
-while (($row = oci_fetch_array($stmt, OCI_ASSOC)) !== false) {
-    $inventario[] = $row;
-}
-oci_free_statement($stmt);
-oci_close($conn);
+          JOIN FIDE_BODEGAS_TB bod ON inv.Id_Usuario = bod.Bodega_Id"; 
+$stmt = $getConection->prepare($query);
+$stmt->execute();
+$inventario = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,26 +29,44 @@ oci_close($conn);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <style>
-        body { font-family: Arial, sans-serif; }
-        .sidebar {
-            height: 100vh;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: #343a40;
-            color: white;
-            padding-top: 20px;
-        }
-        .sidebar a { padding: 10px; text-decoration: none; color: white; display: block; }
-        .sidebar a:hover { background: #495057; }
-        .content { margin-left: 260px; padding: 20px; }
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+        height: 100vh;
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #343a40;
+        color: white;
+        padding-top: 20px;
+    }
+
+    .sidebar a {
+        padding: 10px;
+        text-decoration: none;
+        color: white;
+        display: block;
+    }
+
+    .sidebar a:hover {
+        background: #495057;
+    }
+
+    .content {
+        margin-left: 260px;
+        padding: 20px;
+    }
     </style>
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-                <img id="O365_MainLink_TenantLogoImg" alt="Organizational Logo" title="Organizational Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAfCAYAAAAslQkwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+VpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOkI3RENFNDgzNkUzQUU0MTFCRjZDQzBCMTk2NkJEODM2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUwODA1QjdDMEZFMTExRTVCNTMwRDEzRTRDRTc2NTRFIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUwODA1QjdCMEZFMTExRTVCNTMwRDEzRTRDRTc2NTRFIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENTMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ1dWlkOjhGMUZBQkJEMjIzQ0U0MTE5QjZERTMzRTIyOEE3QTRBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY3MGE4ZDJiLTYxZWYtNGVjMi05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">
+        <img id="O365_MainLink_TenantLogoImg" alt="Organizational Logo" title="Organizational Logo"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAfCAYAAAAslQkwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+VpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ1dWlkOkI3RENFNDgzNkUzQUU0MTFCRjZDQzBCMTk2NkJEODM2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkUwODA1QjdDMEZFMTExRTVCNTMwRDEzRTRDRTc2NTRFIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkUwODA1QjdCMEZFMTExRTVCNTMwRDEzRTRDRTc2NTRFIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIElsbHVzdHJhdG9yIENTMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ1dWlkOjhGMUZBQkJEMjIzQ0U0MTE5QjZERTMzRTIyOEE3QTRBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY3MGE4ZDJiLTYxZWYtNGVjMi05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">
 
         <hr>
         <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i> Inicio</a>
@@ -59,7 +75,7 @@ oci_close($conn);
         <a class="nav-link text-white" href="empleados.php"><i class="fas fa-users"></i> Empleados</a>
         <a class="nav-link text-white" href="reportes.php"><i class="fas fa-chart-bar"></i> Reportes</a>
     </div>
-    <!-- Contenido Principal -->
+    <!-- Contenido -->
     <div class="content">
         <h2>Inventario</h2>
         <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalInventario">
@@ -77,21 +93,23 @@ oci_close($conn);
             </thead>
             <tbody>
                 <?php if(!empty($inventario)): ?>
-                    <?php foreach($inventario as $item): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($item['ID_INVENTARIO']); ?></td>
-                            <td><?php echo htmlspecialchars($item['NOMBREMATERIAL']); ?></td>
-                            <td><?php echo htmlspecialchars($item['BODEGA']); ?></td>
-                            <td><?php echo htmlspecialchars($item['FECHA_VENCIMIENTO']); ?></td>
-                            <td><?php echo htmlspecialchars($item['CANTIDAD']); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
+                <?php foreach($inventario as $item): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($item['id']); ?></td>
+                    <td><?php echo htmlspecialchars($item['nombre']); ?></td>
+                    <td><?php echo htmlspecialchars($item['bodega']); ?></td>
+                    <td><?php echo htmlspecialchars($item['fecha_vencimiento']); ?></td>
+                    <td><?php echo htmlspecialchars($item['cantidad']); ?></td>
+                </tr>
+                <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="5">No hay registros en el inventario.</td></tr>
+                <tr>
+                    <td colspan="5">No hay registros en el inventario.</td>
+                </tr>
                 <?php endif; ?>
             </tbody>
         </table>
-        <!-- Modal para Agregar Material (Formulario estático o a implementar) -->
+        <!-- Modal para Agregar Material -->
         <div class="modal fade" id="modalInventario" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -100,27 +118,27 @@ oci_close($conn);
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="procesar_inventario.php" method="POST">
-                            <!-- Campos del formulario -->
+                        <form>
+                            <!-- Ajusta la acción y método para guardar el material -->
                             <div class="mb-3">
                                 <label class="form-label">Part Number</label>
-                                <input type="text" name="part_number" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nombre</label>
-                                <input type="text" name="nombre" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Bodega</label>
-                                <input type="text" name="bodega" class="form-control">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Vencimiento</label>
-                                <input type="date" name="vencimiento" class="form-control">
+                                <input type="date" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Cantidad</label>
-                                <input type="number" name="cantidad" class="form-control">
+                                <input type="number" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
@@ -135,9 +153,10 @@ oci_close($conn);
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#tablaInventario').DataTable();
-        });
+    $(document).ready(function() {
+        $('#tablaInventario').DataTable();
+    });
     </script>
 </body>
+
 </html>
