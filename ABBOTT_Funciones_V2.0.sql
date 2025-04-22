@@ -266,7 +266,7 @@ BEGIN
     SELECT tr.Nombre_Rol 
     INTO V_Tipo_Rol 
     FROM FIDE_ROLES_TB r 
-    JOIN Tipos_Rol tr ON r.TipoRol_Id = tr.TipoRol_Id 
+    JOIN FIDE_TIPOS_ROL_TB tr ON r.TipoRol_Id = tr.TipoRol_Id 
     WHERE r.Id_Rol = P_Id_Rol;
     
     RETURN V_Tipo_Rol;

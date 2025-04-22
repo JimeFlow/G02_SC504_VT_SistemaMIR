@@ -17,8 +17,6 @@ FROM
 JOIN 
     FIDE_ESTADO_TB e ON m.Estado_Id = e.Estado_Id;
 
--- Para verla SELECT * FROM VISTA_MATERIALES_ESTADO;
-
 
 
 -- 2. Vista para mostrar ingresos recientes
@@ -34,8 +32,6 @@ JOIN
     FIDE_MATERIALES_TB m ON i.Id_Material = m.Id_Material
 WHERE 
     i.Fecha_Ingreso > SYSDATE - 30;  -- Filtramos los ingresos de los últimos 30 días
-
--- Para verla SELECT * FROM VISTA_INGRESOS_RECIENTES;
 
 
 
@@ -53,8 +49,6 @@ JOIN
 JOIN 
     FIDE_ESTADO_TB e ON r.Estado_Id = e.Estado_Id;
 
--- Para verla SELECT * FROM VISTA_REPORTES_USUARIO;
-
 
 
 -- 4. Vista para mostrar tareas pendientes
@@ -71,8 +65,6 @@ JOIN
 WHERE 
     e.Descripcion <> 'Completado';  -- Filtramos solo tareas que no estén completadas
 
---Para verla SELECT * FROM VISTA_TAREAS_PENDIENTES;
-
 
 
 -- 5. Vista para mostrar ingresos por material
@@ -86,8 +78,6 @@ FROM
 JOIN 
     FIDE_MATERIALES_TB m ON i.Id_Material = m.Id_Material;
 
--- Para verla SELECT * FROM VISTA_INGRESOS_POR_MATERIAL;
-
 
 
 -- 6. Vista para mostrar materiales con cantidad disponible y solicitada
@@ -98,8 +88,6 @@ SELECT
     m.Cantidad_Solicitada
 FROM 
     FIDE_MATERIALES_TB m;
-
--- Para verla SELECT * FROM VISTA_MATERIALES_CANTIDAD;
 
 
 
@@ -113,8 +101,6 @@ FROM
     FIDE_REPORTES_TB r
 JOIN 
     FIDE_ESTADO_TB e ON r.Estado_Id = e.Estado_Id;
-
--- Para verla SELECT * FROM VISTA_REPORTES_ESTADO;
 
 
 
@@ -130,8 +116,6 @@ SELECT
     END AS Estado_Vencimiento
 FROM 
     FIDE_MATERIALES_TB m;
-
--- Para verla SELECT * FROM VISTA_MATERIALES_VENCIMIENTO;
 
 
 
@@ -150,8 +134,6 @@ JOIN
 JOIN 
     FIDE_ESTADO_TB e ON t.Estado_Id = e.Estado_Id;
 
--- Para verla SELECT * FROM VISTA_TAREAS_POR_USUARIO;
-
 
 
 -- 10. Vista para mostrar materiales con baja cantidad disponible
@@ -163,8 +145,6 @@ FROM
     FIDE_MATERIALES_TB m
 WHERE 
     m.Cantidad_Disponible < 10;  -- Umbral de 10 unidades
-
--- Para verla SELECT * FROM VISTA_MATERIALES_BAJA_CANTIDAD;
 
 
 
@@ -182,8 +162,6 @@ JOIN
 WHERE 
     e.Descripcion = 'Completado';  -- Filtra solo las tareas con estado 'Completado'
 
--- Para verla SELECT * FROM VISTA_TAREAS_COMPLETADAS;
-
 
 
 -- 12. Vista para mostrar materiales con su estado
@@ -196,4 +174,4 @@ FROM
 JOIN 
     FIDE_ESTADO_TB e ON m.Estado_Id = e.Estado_Id;
 
--- Para verla SELECT * FROM VISTA_MATERIALES_ESTADO;
+

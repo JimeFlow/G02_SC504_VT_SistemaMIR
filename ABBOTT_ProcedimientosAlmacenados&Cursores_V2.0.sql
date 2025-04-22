@@ -220,7 +220,7 @@ END;
    V_Cantidad_Disponible NUMBER;
    V_Cantidad_Solicitada NUMBER;
  BEGIN
-   Mostrar_Material(101, V_Nombre, V_Fecha_Vencimiento, V_Cantidad_Disponible, V_Cantidad_Solicitada);
+   FIDE_MATERIALES_TB_Mostrar_Material_SP (101, V_Nombre, V_Fecha_Vencimiento, V_Cantidad_Disponible, V_Cantidad_Solicitada);
    DBMS_OUTPUT.PUT_LINE('Nombre: ' || V_Nombre);
    DBMS_OUTPUT.PUT_LINE('Fecha de Vencimiento: ' || V_Fecha_Vencimiento);
    DBMS_OUTPUT.PUT_LINE('Cantidad Disponible: ' || V_Cantidad_Disponible);
@@ -259,7 +259,7 @@ BEGIN
 END;
 /
 /*Para ejecutar*/
--- EXEC Verificar_Material_Suficiente(101, 100);
+-- EXEC FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP(101, 100);
 
 
 -- 7. Mostrar los datos de una tarea por Id
@@ -303,7 +303,7 @@ DECLARE
    V_Fecha_Recibido DATE;
    V_Descripcion VARCHAR2(200);
  BEGIN
-   Mostrar_Tarea(101, V_UPI, V_Nombre, V_Fecha_Recibido, V_Descripcion);
+   FIDE_TAREAS_TB_Mostrar_Tarea_SP (101, V_UPI, V_Nombre, V_Fecha_Recibido, V_Descripcion);
    DBMS_OUTPUT.PUT_LINE('UPI: ' || V_UPI);
    DBMS_OUTPUT.PUT_LINE('Nombre: ' || V_Nombre);
    DBMS_OUTPUT.PUT_LINE('Fecha Recibido: ' || V_Fecha_Recibido);
@@ -340,7 +340,7 @@ EXCEPTION
 END;
 /
 /*Para ejecutar*/
---EXEC AUMENTAR_CANTIDAD_MATERIAL(101, 25);
+--EXEC FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP (101, 25);
 
 
 -- 9. Procedimiento para actualizar el stock de una bodega en la tabla BODEGAS
@@ -366,7 +366,7 @@ EXCEPTION
 END;
 /
 /*Para ejecutar*/
--- EXEC ACTUALIZAR_STOCK_BODEGA(1, 250);
+-- EXEC FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP(1, 250);
 
 
 -- 10. Actualizar datos de contacto de un empleado
@@ -394,7 +394,7 @@ EXCEPTION
 END;
 /
 
--- Prueba EXECUTE Actualizar_Rol_Empleado(101, 3);
+-- Prueba EXECUTE FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP(101, 3);
 
 
 -- 11. Actualizar el horario del empleado
@@ -422,7 +422,7 @@ EXCEPTION
         dbms_output.put_line('Error al actualizar horario ' || sqlerrm);
 END;
 /
--- Prueba EXECUTE Actualizar_Horario_Empleado(101, 2);
+-- Prueba EXECUTE FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP(101, 2);
 
 
 -- 12. Actualizar estado de los ingresos
@@ -450,7 +450,7 @@ EXCEPTION
         dbms_output.put_line('Error al actualizar estado ' || sqlerrm);
 END;
 /
--- Prueba EXECUTE Actualizar_Estado_Ingreso(101, 2);
+-- Prueba EXECUTE FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP(101, 2);
 
 
 -- 13. Actualizar descripcion de un reporte
@@ -478,7 +478,7 @@ EXCEPTION
         dbms_output.put_line('Error al actualizar descripción ' || sqlerrm);
 END;
 /
--- Prueba EXECUTE Actualizar_Descripcion_Reporte(101, 'Nueva descripción del reporte.');
+-- Prueba EXECUTE FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP(101, 'Nueva descripción del reporte.');
 
 
 -- 14. Actualizar estado del reporte
@@ -509,7 +509,7 @@ EXCEPTION
         dbms_output.put_line('Error al actualizar estado de reporte ' || sqlerrm);
 END;
 /
--- Prueba EXECUTE Actualizar_Estado_Reporte(101, 1);
+-- Prueba EXECUTE FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP(101, 1);
 
 
 
@@ -536,7 +536,7 @@ EXCEPTION
         dbms_output.put_line('Error al eliminar material ' || sqlerrm);
 END;
 /
--- Prueba EXECUTE Eliminar_Material(101);
+-- Prueba EXECUTE FIDE_MATERIALES_TB_Eliminar_Material_SP(101);
 
 
 -- 16. Eliminar una tarea por Id
@@ -561,11 +561,9 @@ EXCEPTION
         dbms_output.put_line('Error al eliminar tarea ' || sqlerrm);
 END;
 /
--- Prueba EXECUTE Eliminar_Tarea(101);
+-- Prueba EXECUTE FIDE_TAREAS_TB_Eliminar_Tarea_SP(101);
 
 --================================= CURSORES =================================--
-
--- APLICAR LA NOMENCLATURA DE PARAMETROS Y VARIABLES (JOSE DANIEL)
 
 -- CREATE / INSERT / REGISTRAR
 -- 17. Insercion de un nuevo registro diario
@@ -661,7 +659,7 @@ EXCEPTION
         dbms_output.put_line('Error al listar empleados ' || sqlerrm);
 END;
 /
--- Prueba - EXECUTE Listar_Empleados;
+-- Prueba - EXECUTE FIDE_PERSONAL_TB_Listar_Empleados_SP;
 
 
 /*
@@ -719,7 +717,7 @@ EXCEPTION
 END;
 /
 /*Para ejecutar*/
--- EXEC MOSTRAR_MATERIALES_BAJO_STOCK;
+-- EXEC FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP;
 
 
 -- 20. Procedimiento para recorrer todas las tareas con un estado específico
@@ -774,7 +772,7 @@ BEGIN
 END;
 /
 /*Para ejecutar*/
--- EXEC PROCESAR_TAREAS_ESTADO(1);  -- Procesa todas las tareas con Estado_Id = 1
+-- EXEC FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP(1);  -- Procesa todas las tareas con Estado_Id = 1
 
 
 /* 21. Procedimiento que recorre todas las tareas pendientes (Estado_Id = 1) usando 
@@ -827,7 +825,7 @@ EXCEPTION
 END;
 /
 /*Para ejecutar*/
--- EXEC MOSTRAR_TAREAS_PENDIENTES;
+-- EXEC FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP;
 
 
 -- 22. Mostrar las tareas de los empleados
@@ -865,7 +863,7 @@ BEGIN
 
 END;
 /
--- Prueba EXECUTE listar_tareas_por_empleado(101);
+-- Prueba EXECUTE FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP(101);
 
 
 -- 23. Listar las entregas por destinatario
@@ -902,7 +900,7 @@ BEGIN
 END;
 /
 
--- EXECUTE listar_entregas_por_destinatario('');
+-- EXECUTE FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP('');
 
 
 -- 24. Listar ingresos por fechas
@@ -945,7 +943,7 @@ BEGIN
 END;
 /
 
--- Prueba EXECUTE listar_ingresos_por_fecha('15-ENE-2025', '20-MAR-2025');
+-- Prueba EXECUTE FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP('15-ENE-2025', '20-MAR-2025');
 
 
 -- 25. Procedimiento que recorre los reportes de un estado específico y muestra su información
@@ -1034,7 +1032,7 @@ BEGIN
 END;
 /
 
--- Prueba EXECUTE actualizar_contacto_personal('Empleado', 'nuevos_contacto@email.com');
+-- Prueba EXECUTE FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP('Empleado', 'nuevos_contacto@email.com');
 
 
 -- 27. Actualizar el estado de las tareas a 'EN PROCESO'
@@ -1086,7 +1084,7 @@ END;
 /
 
 
--- Prueba EXECUTE actualizar_tareas_en_proceso;
+-- Prueba EXECUTE FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP;
 
 
 -- 28. Actualizar el estado de las tareas a 'COMPLETADA'
@@ -1120,7 +1118,7 @@ BEGIN
     COMMIT;
 END;
 /
--- Prueba EXECUTE actualizar_tareas_completadas;
+-- Prueba EXECUTE FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP;
 
 
 -- 29. Actualizar el estado del material con stock bajo
@@ -1183,7 +1181,7 @@ EXCEPTION
 END;
 /
 /*Para ejecutar*/
--- EXEC ACTUALIZAR_ESTADO_MATERIAL_BAJO_STOCK;
+-- EXEC FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP;
 
 
 
