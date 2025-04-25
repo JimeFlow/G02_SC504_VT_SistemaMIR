@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
 <div class="container">
     <?= $mensaje ?? '' ?>
 
-    <h2>Agregar Inventario</h2>
+    <h2>Agregar Alerta de Inventario</h2>
     <form method="POST" class="mb-4">
         <div class="row g-3">
                 <div class="col-md-4">
@@ -105,7 +105,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
                 </div>
                 <div class="col-md-4">
                     <label for="id_material" class="form-label">ID Material</label>
-                    <input type="text" class="form-control" id="id_material" name="id_material" required />
+                    <select class="form-select" id="id_material" name="id_material" required>
+                        <option value="">Seleccione un material</option>
+                        <?php foreach ($materiales as $material): ?>
+                            <option value="<?= htmlspecialchars($material['ID_MATERIAL']) ?>"><?= htmlspecialchars($material['NOMBRE'] ?? $material['NOMBRE_MATERIAL'] ?? $material['ID_MATERIAL']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="estado_id" class="form-label">Estado</label>
@@ -152,7 +157,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
             </div>
             <div class="col-md-4">
                 <label for="id_material_edit" class="form-label">ID Material</label>
-                <input type="text" class="form-control" id="id_material_edit" name="id_material" value="<?= $datosEditar['ID_MATERIAL'] ?>" required />
+                <select class="form-select" id="id_material_edit" name="id_material" required>
+                    <option value="">Seleccione un material</option>
+                    <?php foreach ($materiales as $material): ?>
+                        <option value="<?= htmlspecialchars($material['ID_MATERIAL']) ?>" <?= $datosEditar['ID_MATERIAL'] == $material['ID_MATERIAL'] ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($material['NOMBRE'] ?? $material['NOMBRE_MATERIAL'] ?? $material['ID_MATERIAL']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="estado_id_edit" class="form-label">Estado</label>
@@ -228,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
         <tbody>
             <?php
             $inventario = $controller->listarInventario();
-            foreach ($inventario as $fila) {
+            foreach ($inventario as $fila):
                 $estadoDesc = '';
                 foreach ($estados as $estado) {
                     if ($estado['ESTADO_ID'] == $fila['ESTADO_ID']) {
@@ -236,21 +248,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
                         break;
                     }
                 }
-                echo "<tr>
-                    <td>{$fila['ID_INVENTARIO']}</td>
-                    <td>{$fila['ID_USUARIO']}</td>
-                    <td>{$fila['UPI']}</td>
-                    <td>{$fila['ID_MATERIAL']}</td>
-                    <td>" . htmlspecialchars($estadoDesc) . "</td>
-                    <td>{$fila['FECHA']}</td>
-                    <td>{$fila['ALERTAS_STOCK']}</td>
-                    <td>
-                        <a href='?editar={$fila['ID_INVENTARIO']}' class='btn btn-sm btn-warning me-1'>Editar</a>
-                        <a href='?eliminar={$fila['ID_INVENTARIO']}' class='btn btn-sm btn-danger' onclick='return confirm(\"¿Estás seguro de eliminar este inventario?\")'>Eliminar</a>
-                    </td>
-                </tr>";
-            }
+                $nombreMaterial = $fila['ID_MATERIAL'];
+                foreach ($materiales as $material) {
+                    if ($material['ID_MATERIAL'] == $fila['ID_MATERIAL']) {
+                        $nombreMaterial = $material['NOMBRE'] ?? $material['NOMBRE_MATERIAL'] ?? $fila['ID_MATERIAL'];
+                        break;
+                    }
+                }
             ?>
+                <tr>
+                    <td><?= htmlspecialchars($fila['ID_INVENTARIO']) ?></td>
+                    <td><?= htmlspecialchars($fila['ID_USUARIO']) ?></td>
+                    <td><?= htmlspecialchars($fila['UPI']) ?></td>
+                    <td><?= htmlspecialchars($nombreMaterial) ?></td>
+                    <td><?= htmlspecialchars($estadoDesc) ?></td>
+                    <td><?= htmlspecialchars($fila['FECHA']) ?></td>
+                    <td><?= htmlspecialchars($fila['ALERTAS_STOCK']) ?></td>
+                    <td>
+                        <a href='?editar=<?= htmlspecialchars($fila['ID_INVENTARIO']) ?>' class='btn btn-sm btn-warning me-1'>Editar</a>
+                        <a href='?eliminar=<?= htmlspecialchars($fila['ID_INVENTARIO']) ?>' class='btn btn-sm btn-danger' onclick='return confirm("¿Estás seguro de eliminar este inventario?")'>Eliminar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

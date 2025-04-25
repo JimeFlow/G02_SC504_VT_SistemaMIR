@@ -12,6 +12,39 @@ class MaterialModel {
         $this->conexion = $db->conectar();
     }
 
+    // Método para obtener el siguiente valor de la secuencia SEQ_FIDE_ID_MATERIAL
+    public function getNextMaterialId() {
+        // Get max ID from table
+        $sqlMax = "SELECT NVL(MAX(ID_MATERIAL), 0) AS MAX_ID FROM FIDE_MATERIALES_TB";
+        $stmtMax = oci_parse($this->conexion, $sqlMax);
+        oci_execute($stmtMax);
+        $rowMax = oci_fetch_assoc($stmtMax);
+        $maxId = $rowMax['MAX_ID'] ?? 0;
+
+        // Get next sequence value
+        $sqlSeq = "SELECT SEQ_FIDE_ID_MATERIAL.NEXTVAL AS NEXT_ID FROM DUAL";
+        $stmtSeq = oci_parse($this->conexion, $sqlSeq);
+        oci_execute($stmtSeq);
+        $rowSeq = oci_fetch_assoc($stmtSeq);
+        $nextSeqVal = $rowSeq['NEXT_ID'] ?? null;
+
+        // If sequence value is less or equal to max ID, advance sequence
+        if ($nextSeqVal <= $maxId) {
+            $diff = $maxId - $nextSeqVal + 1;
+            for ($i = 0; $i < $diff; $i++) {
+                $stmtSeq = oci_parse($this->conexion, "SELECT SEQ_FIDE_ID_MATERIAL.NEXTVAL FROM DUAL");
+                oci_execute($stmtSeq);
+            }
+            // Get new sequence value after advancing
+            $stmtSeq = oci_parse($this->conexion, "SELECT SEQ_FIDE_ID_MATERIAL.CURRVAL AS CURR_ID FROM DUAL");
+            oci_execute($stmtSeq);
+            $rowSeq = oci_fetch_assoc($stmtSeq);
+            $nextSeqVal = $rowSeq['CURR_ID'] ?? null;
+        }
+
+        return $nextSeqVal;
+    }
+
     // Método para insertar un nuevo material en la base de datos
     public function insertarMaterial($id, $estadoId, $nombre, $fecha, $disponible, $solicitada) {
         $sql = "INSERT INTO FIDE_MATERIALES_TB (ID_MATERIAL, ESTADO_ID, NOMBRE, FECHA_VENCIMIENTO, CANTIDAD_DISPONIBLE, CANTIDAD_SOLICITADA)
@@ -75,6 +108,17 @@ class MaterialModel {
         oci_bind_by_name($stmt, ':id', $id);
         // Ejecutar la consulta de actualización
         return oci_execute($stmt);
+    }
+    // Método para obtener todos los estados
+    public function getEstados() {
+        $sql = "SELECT ESTADO_ID, DESCRIPCION FROM FIDE_ESTADO_TB ORDER BY ESTADO_ID";
+        $stmt = oci_parse($this->conexion, $sql);
+        oci_execute($stmt);
+        $estados = [];
+        while ($row = oci_fetch_assoc($stmt)) {
+            $estados[] = $row;
+        }
+        return $estados;
     }
 }
 ?>

@@ -13,6 +13,9 @@ class MaterialController {
 
     // Método para agregar un nuevo material, delegando al modelo
     public function agregarMaterial($id, $estadoId, $nombre, $fecha, $disponible, $solicitada) {
+        if ($id === null || $id === '') {
+            $id = $this->model->getNextMaterialId();
+        }
         return $this->model->insertarMaterial($id, $estadoId, $nombre, $fecha, $disponible, $solicitada);
     }
 
@@ -34,6 +37,11 @@ class MaterialController {
     // Método para actualizar un material, delegando al modelo
     public function actualizarMaterial($id, $estadoId, $nombre, $fecha, $disponible, $solicitada) {
         return $this->model->actualizarMaterial($id, $estadoId, $nombre, $fecha, $disponible, $solicitada);
+    }
+
+    // Método para obtener todos los estados
+    public function listarEstados() {
+        return $this->model->getEstados();
     }
 }
 ?>

@@ -71,9 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
     <h2>Agregar Material</h2>
     <form method="POST" class="mb-4">
         <div class="row g-3">
-            <div class="col-md-4">
+            <div class="col-md-4" style="display:none;">
                 <label for="id_material" class="form-label">ID Material</label>
-                <input type="text" class="form-control" id="id_material" name="id_material" required />
+                <input type="text" class="form-control" id="id_material" name="id_material" value="" readonly />
+                <small class="form-text text-muted">El ID Material se asigna automáticamente por la base de datos.</small>
             </div>
             <div class="col-md-4">
                 <label for="estado_id" class="form-label">Estado ID</label>
@@ -99,14 +100,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar'])) {
         <button type="submit" name="agregar" class="btn btn-primary mt-3">Agregar</button>
     </form>
 
-    <?php if (isset($datosEditar)) { ?>
+    <?php if (isset($datosEditar)) { 
+        $estados = $controller->listarEstados();
+    ?>
     <h2>Editar Material</h2>
     <form method="POST" class="mb-4">
         <input type="hidden" name="id_material" value="<?= $datosEditar['ID_MATERIAL'] ?>" />
         <div class="row g-3">
             <div class="col-md-4">
                 <label for="estado_id_edit" class="form-label">Estado ID</label>
-                <input type="text" class="form-control" id="estado_id_edit" name="estado_id" value="<?= $datosEditar['ESTADO_ID'] ?>" required />
+                <select class="form-select" id="estado_id_edit" name="estado_id" required>
+                    <?php foreach ($estados as $estado): ?>
+                        <option value="<?= $estado['ESTADO_ID'] ?>" <?= ($estado['ESTADO_ID'] == $datosEditar['ESTADO_ID']) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($estado['DESCRIPCION']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="nombre_edit" class="form-label">Nombre</label>
