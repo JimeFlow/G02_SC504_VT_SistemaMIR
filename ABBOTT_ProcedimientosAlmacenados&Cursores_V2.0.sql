@@ -2,8 +2,6 @@
 FECHA: 20/03/2025
 PROYECTO FINAL: Avance 02 con el Esquema ABBOTT*/
 
--- CORREGIR NOMBRES APLICANDO LA NOMENCLATURA
-
 --============================== PROCEDIMIENTOS ==============================--
 -- CREATE / INSERT / REGISTRAR
 -- 1. Registrar un nuevo personal
