@@ -1,0 +1,601 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="FIDE_PROYECTO_FINAL_PKG/report.js" type="text/javascript"></script>
+<link href="FIDE_PROYECTO_FINAL_PKG/report.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="banner">
+<table width="98%"><tr>
+<td><h2 class="banner">FIDE_PROYECTO_FINAL_PKG</h2></td>
+</tr></table></div>
+<div id="maintabs">
+<div class="currentmaintab" onclick="onSelectMainTab(this, 0)">
+<div>
+<p>Doc</p>
+</div>
+</div>
+<div class="maintab" onclick="onSelectMainTab(this, 1)">
+<div>
+<p>Details</p>
+</div>
+</div>
+<div class="maintab" onclick="onSelectMainTab(this, 2)">
+<div>
+<p>Grants</p>
+</div>
+</div>
+<div class="maintab" onclick="onSelectMainTab(this, 3)">
+<div>
+<p>References</p>
+</div>
+</div>
+<div class="maintab" onclick="onSelectMainTab(this, 4)">
+<div>
+<p>Dependencies</p>
+</div>
+</div>
+<div class="maintab" onclick="onSelectMainTab(this, 5)">
+<div>
+<p>Code</p>
+</div>
+</div>
+</div>
+<br/>
+<div id="masterreports">
+<div id="Master.0">
+<div class="currentmasterreport">
+<TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2"></TR></TABLE><HR><P>================================ FUNCIONES =================================--</P><HR><P></P><A NAME="method_summary"></A><TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1"><TR CLASS="TableHeadingColor"><TD COLSPAN="2"><FONT SIZE="+2"><B>Method Summary</B></FONT></TD><TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_AREAS_TB_Obtener_Nombre_Area_FN">FIDE_AREAS_TB_Obtener_Nombre_Area_FN</A></B>( P_Area_Id IN FIDE_AREAS_TB . Area_Id % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_BODEGA_MATERIAL_TB_Asignar_Material_Bodega_SP">FIDE_BODEGA_MATERIAL_TB_Asignar_Material_Bodega_SP</A></B>( p_bodega_id IN FIDE_BODEGA_MATERIAL_TB . bodega_id % TYPE , p_id_material IN FIDE_BODEGA_MATERIAL_TB . id_material % TYPE ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32. Asignacion de un material a una bodega en especifico</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN">FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN</A></B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE , P_Id_Material IN FIDE_MATERIALES_TB . Id_Material % TYPE ) RETURN BOOLEAN ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP">FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP</A></B>( P_bodega_id IN FIDE_BODEGAS_TB . bodega_id % TYPE , P_nuevo_stock IN FIDE_BODEGAS_TB . stock % TYPE ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recibe el ID de la bodega y el nuevo valor de stock</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_BODEGAS_TB_Calcular_Stock_Total_Bodega_FN">FIDE_BODEGAS_TB_Calcular_Stock_Total_Bodega_FN</A></B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE ) RETURN NUMBER ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_BODEGAS_TB_Contar_Materiales_Bodega_FN">FIDE_BODEGAS_TB_Contar_Materiales_Bodega_FN</A></B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE ) RETURN NUMBER ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_BODEGAS_TB_Obtener_Nombre_Bodega_FN">FIDE_BODEGAS_TB_Obtener_Nombre_Bodega_FN</A></B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_DATOS_ENTREGAS_TB_Obtener_FechaHora_Entrega_FN">FIDE_DATOS_ENTREGAS_TB_Obtener_FechaHora_Entrega_FN</A></B>( P_Dato_Entrega_Id IN FIDE_DATOS_ENTREGAS_TB . Dato_Entrega_Id % TYPE ) RETURN TIMESTAMP ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_ENTREGAS_TB_Calcular_Cantidad_Restante_Entregas_FN">FIDE_ENTREGAS_TB_Calcular_Cantidad_Restante_Entregas_FN</A></B>( P_Id_Entrega IN FIDE_ENTREGAS_TB . Id_Entrega % TYPE ) RETURN NUMBER ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON ENTREGAS E INGRESOS</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP">FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP</A></B>( P_destinatario IN VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23. Listar las entregas por destinatario</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_ESTADO_TB_Obtener_Descripcion_Estado_FN">FIDE_ESTADO_TB_Obtener_Descripcion_Estado_FN</A></B>( P_Estado_Id IN FIDE_ESTADO_TB . Estado_Id % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCION CON ESTADO</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP">FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP</A></B>( P_id_ingreso IN NUMBER , P_nuevo_estado_id IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12. Actualizar estado de los ingresos</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP">FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP</A></B>( P_fecha_inicio IN DATE , P_fecha_fin IN DATE ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24. Listar ingresos por fechas</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INGRESOS_TB_Obtener_Fecha_Ingreso_Material_FN">FIDE_INGRESOS_TB_Obtener_Fecha_Ingreso_Material_FN</A></B>( P_Id_Ingreso IN FIDE_INGRESOS_TB . Id_Ingreso % TYPE ) RETURN DATE ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INGRESOS_TB_Registrar_Ingreso_SP">FIDE_INGRESOS_TB_Registrar_Ingreso_SP</A></B>( P_Id_Ingreso IN NUMBER , P_Id_Material IN NUMBER , P_UPI IN NUMBER , P_Estado_Id IN NUMBER , P_Cantidad_Recibida IN NUMBER , P_Fecha_Ingreso IN DATE ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Registrar un nuevo ingreso de material</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP">FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP</A></B>( P_id_material IN INT , P_ultima_cantidad IN INT , P_suficiente OUT VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6. Procedimiento para verificar si hay suficiente material ingresado</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INVENTARIO_TB_Generar_Alertas_Stock_SP">FIDE_INVENTARIO_TB_Generar_Alertas_Stock_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30. Generacion de alertas de stock bajo</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_INVENTARIO_TB_Obtener_Responsable_Inventario_FN">FIDE_INVENTARIO_TB_Obtener_Responsable_Inventario_FN</A></B>( P_Id_Inventario IN FIDE_INVENTARIO_TB . Id_Inventario % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP">FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29. Actualizar el estado del material con stock bajo</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP">FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP</A></B>( P_id_material IN INT , P_cantidad_a_agregar IN INT ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8. Procedimiento que permite aumentar la cantidad disponible de un material específico.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     - Se utiliza para actualizar el stock cuando se recibe nuevo material. </TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Calcular_Total_Materiales_Disponible_FN">FIDE_MATERIALES_TB_Calcular_Total_Materiales_Disponible_FN</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Eliminar_Material_SP">FIDE_MATERIALES_TB_Eliminar_Material_SP</A></B>( P_id_material IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15. Eliminar un Material por Id</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Mostrar_Material_SP">FIDE_MATERIALES_TB_Mostrar_Material_SP</A></B>( P_id_material IN NUMBER , P_nombre OUT VARCHAR2 , P_fecha_vencimiento OUT DATE , P_cantidad_disponible OUT NUMBER , P_cantidad_solicitada OUT NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5. Mostrar material por ID</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP">FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -- 19. Mostrar los materiales con stock bajo<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    - Procedimiento que recorre los materiales con bajo stock (<=10 unidades) usando<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    un cursor explícito para mostrar Id_Material, Nombre y Cantidad_Disponible<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_MATERIALES_TB_Obtener_Nombre_Material_FN">FIDE_MATERIALES_TB_Obtener_Nombre_Material_FN</A></B>( P_Id_Material IN FIDE_MATERIALES_TB . Id_Material % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON MATERIALES Y BODEGAS</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP">FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP</A></B>( p_tipo IN VARCHAR2 , p_nuevos_datos_contacto IN VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26. Actualizar datos de contacto del personal</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP">FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP</A></B>( P_id_personal IN NUMBER , P_nuevo_horario_id IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11. Actualizar el horario del empleado</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP">FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP</A></B>( P_upi IN NUMBER , P_nuevo_rol_id IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10. Actualizar datos de contacto de un empleado</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_PERSONAL_TB_Listar_Empleados_SP">FIDE_PERSONAL_TB_Listar_Empleados_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18. Listar los empleados</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_PERSONAL_TB_Obtener_Nombre_Empleado_FN">FIDE_PERSONAL_TB_Obtener_Nombre_Empleado_FN</A></B>( P_UPI IN FIDE_PERSONAL_TB . UPI % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON PERSONAL Y TAREAS</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_PERSONAL_TB_Registrar_Personal_SP">FIDE_PERSONAL_TB_Registrar_Personal_SP</A></B>( P_Id_Personal IN NUMBER , P_Id_Rol IN NUMBER , P_Id_Entrega IN NUMBER , P_Horario_Id IN NUMBER , P_Estado_Id IN NUMBER , P_Tipo_Personal IN VARCHAR2 , P_Nombre IN VARCHAR2 , P_Apellidos IN VARCHAR2 , P_Datos_Contacto IN VARCHAR2 , P_Linea_Trabajo IN VARCHAR2 , P_Id_Usuario IN NUMBER DEFAULT NULL , P_UPI IN NUMBER DEFAULT NULL ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Registrar un nuevo personal</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP">FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP</A></B>( P_id_entrega IN FIDE_REGISTRO_DIARIO_TB . id_entrega % TYPE , P_id_ingreso IN FIDE_REGISTRO_DIARIO_TB . id_ingreso % TYPE , P_id_tarea IN FIDE_REGISTRO_DIARIO_TB . id_tarea % TYPE , P_estado_id IN FIDE_REGISTRO_DIARIO_TB . estado_id % TYPE ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17. Insercion de un nuevo registro diario</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP">FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP</A></B>( P_id_reporte IN NUMBER , P_nueva_descripcion IN VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13. Actualizar descripcion de un reporte</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP">FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP</A></B>( P_id_reporte IN NUMBER , P_nuevo_estado_id IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14. Actualizar estado del reporte</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP">FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP</A></B>( P_estado_id IN INT ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25. Procedimiento que recorre los reportes de un estado específico y muestra su información</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_REPORTES_TB_Registrar_Reporte_SP">FIDE_REPORTES_TB_Registrar_Reporte_SP</A></B>( P_Id_Reporte IN NUMBER , P_Id_Usuario IN NUMBER , P_Id_Inventario IN NUMBER , P_Id_Registro IN NUMBER , P_Estado_Id IN NUMBER , P_Descripcion IN VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. Registrar un nuevo reporte</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_ROLES_TB_Obtener_TipoRol_Personal_FN">FIDE_ROLES_TB_Obtener_TipoRol_Personal_FN</A></B>( P_Id_Rol IN FIDE_ROLES_TB . Id_Rol % TYPE ) RETURN VARCHAR2 ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON ROLES Y AREAS</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP">FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28. Actualizar el estado de las tareas a 'COMPLETADA'</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP">FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27. Actualizar el estado de las tareas a 'EN PROCESO'</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP">FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31. Asignacion de las tareas pendientes a los empleados segun la linea de trabajo</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Contar_Tareas_Pendientes_FN">FIDE_TAREAS_TB_Contar_Tareas_Pendientes_FN</A></B>( P_UPI IN FIDE_TAREAS_TB . UPI % TYPE ) RETURN NUMBER ; </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Eliminar_Tarea_SP">FIDE_TAREAS_TB_Eliminar_Tarea_SP</A></B>( P_id_tarea IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16. Eliminar una tarea por Id</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Insertar_Tarea_SP">FIDE_TAREAS_TB_Insertar_Tarea_SP</A></B>( P_Id_Tarea IN INT , P_UPI IN NUMBER , P_Estado_Id IN INT , P_Nombre IN VARCHAR2 , P_Fecha_Recibido IN DATE , P_Descripcion IN VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Insertar una nueva tarea en la tabla TAREAS.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     - Recibe como parámetros los valores de cada columna de la tabla TAREAS y realiza<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     la inserción correspondiente, asignando la fecha de recepción actual.</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP">FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP</A></B>( P_upi IN NUMBER ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22. Mostrar las tareas de los empleados</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Mostrar_Tarea_SP">FIDE_TAREAS_TB_Mostrar_Tarea_SP</A></B>( P_id_tarea IN NUMBER , P_upi OUT NUMBER , P_nombre OUT VARCHAR2 , P_fecha_recibido OUT DATE , P_descripcion OUT VARCHAR2 ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7. Mostrar los datos de una tarea por Id</TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP">FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP</A></B></CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21. Procedimiento que recorre todas las tareas pendientes (Estado_Id = 1) usando<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          un cursor explícito y muestra su información básica. </TD></TR>
+<TR CLASS="TableRowColor"><TD WIDTH="1%" VALIGN="top" ALIGN="right"><FONT SIZE="-1"><CODE>&nbsp;</CODE></FONT></TD><TD><CODE><B><A HREF="#FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP">FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP</A></B>( P_estado_id IN INT ) </CODE><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20. Procedimiento para recorrer todas las tareas con un estado específico</TD></TR>
+</TABLE>
+<P></P><A NAME="method_detail"></A><TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="3" BORDER="1"><TR CLASS="TableHeadingColor"><TD COLSPAN="2"><FONT SIZE="+2"><B>Method Detail</B></FONT></TD></TABLE><A NAME="FIDE_AREAS_TB_Obtener_Nombre_Area_FN"></A>
+<H3>FIDE_AREAS_TB_Obtener_Nombre_Area_FN</H3><PRE>          <B>FIDE_AREAS_TB_Obtener_Nombre_Area_FN</B>( P_Area_Id IN FIDE_AREAS_TB . Area_Id % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_BODEGA_MATERIAL_TB_Asignar_Material_Bodega_SP"></A>
+<H3>FIDE_BODEGA_MATERIAL_TB_Asignar_Material_Bodega_SP</H3><PRE>          <B>FIDE_BODEGA_MATERIAL_TB_Asignar_Material_Bodega_SP</B>( p_bodega_id IN FIDE_BODEGA_MATERIAL_TB . bodega_id % TYPE , p_id_material IN FIDE_BODEGA_MATERIAL_TB . id_material % TYPE ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32. Asignacion de un material a una bodega en especifico<DD><DL></DL></DD></DL><HR><A NAME="FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN"></A>
+<H3>FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN</H3><PRE>          <B>FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN</B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE , P_Id_Material IN FIDE_MATERIALES_TB . Id_Material % TYPE ) RETURN BOOLEAN ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP"></A>
+<H3>FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP</H3><PRE>          <B>FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP</B>( P_bodega_id IN FIDE_BODEGAS_TB . bodega_id % TYPE , P_nuevo_stock IN FIDE_BODEGAS_TB . stock % TYPE ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recibe el ID de la bodega y el nuevo valor de stock<DD><DL></DL></DD></DL><HR><A NAME="FIDE_BODEGAS_TB_Calcular_Stock_Total_Bodega_FN"></A>
+<H3>FIDE_BODEGAS_TB_Calcular_Stock_Total_Bodega_FN</H3><PRE>          <B>FIDE_BODEGAS_TB_Calcular_Stock_Total_Bodega_FN</B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE ) RETURN NUMBER ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_BODEGAS_TB_Contar_Materiales_Bodega_FN"></A>
+<H3>FIDE_BODEGAS_TB_Contar_Materiales_Bodega_FN</H3><PRE>          <B>FIDE_BODEGAS_TB_Contar_Materiales_Bodega_FN</B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE ) RETURN NUMBER ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_BODEGAS_TB_Obtener_Nombre_Bodega_FN"></A>
+<H3>FIDE_BODEGAS_TB_Obtener_Nombre_Bodega_FN</H3><PRE>          <B>FIDE_BODEGAS_TB_Obtener_Nombre_Bodega_FN</B>( P_Bodega_Id IN FIDE_BODEGAS_TB . Bodega_Id % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_DATOS_ENTREGAS_TB_Obtener_FechaHora_Entrega_FN"></A>
+<H3>FIDE_DATOS_ENTREGAS_TB_Obtener_FechaHora_Entrega_FN</H3><PRE>          <B>FIDE_DATOS_ENTREGAS_TB_Obtener_FechaHora_Entrega_FN</B>( P_Dato_Entrega_Id IN FIDE_DATOS_ENTREGAS_TB . Dato_Entrega_Id % TYPE ) RETURN TIMESTAMP ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_ENTREGAS_TB_Calcular_Cantidad_Restante_Entregas_FN"></A>
+<H3>FIDE_ENTREGAS_TB_Calcular_Cantidad_Restante_Entregas_FN</H3><PRE>          <B>FIDE_ENTREGAS_TB_Calcular_Cantidad_Restante_Entregas_FN</B>( P_Id_Entrega IN FIDE_ENTREGAS_TB . Id_Entrega % TYPE ) RETURN NUMBER ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON ENTREGAS E INGRESOS<DD><DL></DL></DD></DL><HR><A NAME="FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP"></A>
+<H3>FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP</H3><PRE>          <B>FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP</B>( P_destinatario IN VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 23. Listar las entregas por destinatario<DD><DL></DL></DD></DL><HR><A NAME="FIDE_ESTADO_TB_Obtener_Descripcion_Estado_FN"></A>
+<H3>FIDE_ESTADO_TB_Obtener_Descripcion_Estado_FN</H3><PRE>          <B>FIDE_ESTADO_TB_Obtener_Descripcion_Estado_FN</B>( P_Estado_Id IN FIDE_ESTADO_TB . Estado_Id % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCION CON ESTADO<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP"></A>
+<H3>FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP</H3><PRE>          <B>FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP</B>( P_id_ingreso IN NUMBER , P_nuevo_estado_id IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12. Actualizar estado de los ingresos<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP"></A>
+<H3>FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP</H3><PRE>          <B>FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP</B>( P_fecha_inicio IN DATE , P_fecha_fin IN DATE ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24. Listar ingresos por fechas<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INGRESOS_TB_Obtener_Fecha_Ingreso_Material_FN"></A>
+<H3>FIDE_INGRESOS_TB_Obtener_Fecha_Ingreso_Material_FN</H3><PRE>          <B>FIDE_INGRESOS_TB_Obtener_Fecha_Ingreso_Material_FN</B>( P_Id_Ingreso IN FIDE_INGRESOS_TB . Id_Ingreso % TYPE ) RETURN DATE ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INGRESOS_TB_Registrar_Ingreso_SP"></A>
+<H3>FIDE_INGRESOS_TB_Registrar_Ingreso_SP</H3><PRE>          <B>FIDE_INGRESOS_TB_Registrar_Ingreso_SP</B>( P_Id_Ingreso IN NUMBER , P_Id_Material IN NUMBER , P_UPI IN NUMBER , P_Estado_Id IN NUMBER , P_Cantidad_Recibida IN NUMBER , P_Fecha_Ingreso IN DATE ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. Registrar un nuevo ingreso de material<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP"></A>
+<H3>FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP</H3><PRE>          <B>FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP</B>( P_id_material IN INT , P_ultima_cantidad IN INT , P_suficiente OUT VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6. Procedimiento para verificar si hay suficiente material ingresado<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INVENTARIO_TB_Generar_Alertas_Stock_SP"></A>
+<H3>FIDE_INVENTARIO_TB_Generar_Alertas_Stock_SP</H3><PRE>          <B>FIDE_INVENTARIO_TB_Generar_Alertas_Stock_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30. Generacion de alertas de stock bajo<DD><DL></DL></DD></DL><HR><A NAME="FIDE_INVENTARIO_TB_Obtener_Responsable_Inventario_FN"></A>
+<H3>FIDE_INVENTARIO_TB_Obtener_Responsable_Inventario_FN</H3><PRE>          <B>FIDE_INVENTARIO_TB_Obtener_Responsable_Inventario_FN</B>( P_Id_Inventario IN FIDE_INVENTARIO_TB . Id_Inventario % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP"></A>
+<H3>FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP</H3><PRE>          <B>FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 29. Actualizar el estado del material con stock bajo<DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP"></A>
+<H3>FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP</H3><PRE>          <B>FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP</B>( P_id_material IN INT , P_cantidad_a_agregar IN INT ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8. Procedimiento que permite aumentar la cantidad disponible de un material específico.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     - Se utiliza para actualizar el stock cuando se recibe nuevo material. <DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Calcular_Total_Materiales_Disponible_FN"></A>
+<H3>FIDE_MATERIALES_TB_Calcular_Total_Materiales_Disponible_FN</H3><PRE>          <B>FIDE_MATERIALES_TB_Calcular_Total_Materiales_Disponible_FN</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Eliminar_Material_SP"></A>
+<H3>FIDE_MATERIALES_TB_Eliminar_Material_SP</H3><PRE>          <B>FIDE_MATERIALES_TB_Eliminar_Material_SP</B>( P_id_material IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15. Eliminar un Material por Id<DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Mostrar_Material_SP"></A>
+<H3>FIDE_MATERIALES_TB_Mostrar_Material_SP</H3><PRE>          <B>FIDE_MATERIALES_TB_Mostrar_Material_SP</B>( P_id_material IN NUMBER , P_nombre OUT VARCHAR2 , P_fecha_vencimiento OUT DATE , P_cantidad_disponible OUT NUMBER , P_cantidad_solicitada OUT NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5. Mostrar material por ID<DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP"></A>
+<H3>FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP</H3><PRE>          <B>FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -- 19. Mostrar los materiales con stock bajo<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    - Procedimiento que recorre los materiales con bajo stock (<=10 unidades) usando<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    un cursor explícito para mostrar Id_Material, Nombre y Cantidad_Disponible<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <DD><DL></DL></DD></DL><HR><A NAME="FIDE_MATERIALES_TB_Obtener_Nombre_Material_FN"></A>
+<H3>FIDE_MATERIALES_TB_Obtener_Nombre_Material_FN</H3><PRE>          <B>FIDE_MATERIALES_TB_Obtener_Nombre_Material_FN</B>( P_Id_Material IN FIDE_MATERIALES_TB . Id_Material % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON MATERIALES Y BODEGAS<DD><DL></DL></DD></DL><HR><A NAME="FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP"></A>
+<H3>FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP</H3><PRE>          <B>FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP</B>( p_tipo IN VARCHAR2 , p_nuevos_datos_contacto IN VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26. Actualizar datos de contacto del personal<DD><DL></DL></DD></DL><HR><A NAME="FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP"></A>
+<H3>FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP</H3><PRE>          <B>FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP</B>( P_id_personal IN NUMBER , P_nuevo_horario_id IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11. Actualizar el horario del empleado<DD><DL></DL></DD></DL><HR><A NAME="FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP"></A>
+<H3>FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP</H3><PRE>          <B>FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP</B>( P_upi IN NUMBER , P_nuevo_rol_id IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10. Actualizar datos de contacto de un empleado<DD><DL></DL></DD></DL><HR><A NAME="FIDE_PERSONAL_TB_Listar_Empleados_SP"></A>
+<H3>FIDE_PERSONAL_TB_Listar_Empleados_SP</H3><PRE>          <B>FIDE_PERSONAL_TB_Listar_Empleados_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18. Listar los empleados<DD><DL></DL></DD></DL><HR><A NAME="FIDE_PERSONAL_TB_Obtener_Nombre_Empleado_FN"></A>
+<H3>FIDE_PERSONAL_TB_Obtener_Nombre_Empleado_FN</H3><PRE>          <B>FIDE_PERSONAL_TB_Obtener_Nombre_Empleado_FN</B>( P_UPI IN FIDE_PERSONAL_TB . UPI % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON PERSONAL Y TAREAS<DD><DL></DL></DD></DL><HR><A NAME="FIDE_PERSONAL_TB_Registrar_Personal_SP"></A>
+<H3>FIDE_PERSONAL_TB_Registrar_Personal_SP</H3><PRE>          <B>FIDE_PERSONAL_TB_Registrar_Personal_SP</B>( P_Id_Personal IN NUMBER , P_Id_Rol IN NUMBER , P_Id_Entrega IN NUMBER , P_Horario_Id IN NUMBER , P_Estado_Id IN NUMBER , P_Tipo_Personal IN VARCHAR2 , P_Nombre IN VARCHAR2 , P_Apellidos IN VARCHAR2 , P_Datos_Contacto IN VARCHAR2 , P_Linea_Trabajo IN VARCHAR2 , P_Id_Usuario IN NUMBER DEFAULT NULL , P_UPI IN NUMBER DEFAULT NULL ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Registrar un nuevo personal<DD><DL></DL></DD></DL><HR><A NAME="FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP"></A>
+<H3>FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP</H3><PRE>          <B>FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP</B>( P_id_entrega IN FIDE_REGISTRO_DIARIO_TB . id_entrega % TYPE , P_id_ingreso IN FIDE_REGISTRO_DIARIO_TB . id_ingreso % TYPE , P_id_tarea IN FIDE_REGISTRO_DIARIO_TB . id_tarea % TYPE , P_estado_id IN FIDE_REGISTRO_DIARIO_TB . estado_id % TYPE ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 17. Insercion de un nuevo registro diario<DD><DL></DL></DD></DL><HR><A NAME="FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP"></A>
+<H3>FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP</H3><PRE>          <B>FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP</B>( P_id_reporte IN NUMBER , P_nueva_descripcion IN VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 13. Actualizar descripcion de un reporte<DD><DL></DL></DD></DL><HR><A NAME="FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP"></A>
+<H3>FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP</H3><PRE>          <B>FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP</B>( P_id_reporte IN NUMBER , P_nuevo_estado_id IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 14. Actualizar estado del reporte<DD><DL></DL></DD></DL><HR><A NAME="FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP"></A>
+<H3>FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP</H3><PRE>          <B>FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP</B>( P_estado_id IN INT ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 25. Procedimiento que recorre los reportes de un estado específico y muestra su información<DD><DL></DL></DD></DL><HR><A NAME="FIDE_REPORTES_TB_Registrar_Reporte_SP"></A>
+<H3>FIDE_REPORTES_TB_Registrar_Reporte_SP</H3><PRE>          <B>FIDE_REPORTES_TB_Registrar_Reporte_SP</B>( P_Id_Reporte IN NUMBER , P_Id_Usuario IN NUMBER , P_Id_Inventario IN NUMBER , P_Id_Registro IN NUMBER , P_Estado_Id IN NUMBER , P_Descripcion IN VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. Registrar un nuevo reporte<DD><DL></DL></DD></DL><HR><A NAME="FIDE_ROLES_TB_Obtener_TipoRol_Personal_FN"></A>
+<H3>FIDE_ROLES_TB_Obtener_TipoRol_Personal_FN</H3><PRE>          <B>FIDE_ROLES_TB_Obtener_TipoRol_Personal_FN</B>( P_Id_Rol IN FIDE_ROLES_TB . Id_Rol % TYPE ) RETURN VARCHAR2 ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FUNCIONES CON ROLES Y AREAS<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP"></A>
+<H3>FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28. Actualizar el estado de las tareas a 'COMPLETADA'<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP"></A>
+<H3>FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 27. Actualizar el estado de las tareas a 'EN PROCESO'<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP"></A>
+<H3>FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 31. Asignacion de las tareas pendientes a los empleados segun la linea de trabajo<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Contar_Tareas_Pendientes_FN"></A>
+<H3>FIDE_TAREAS_TB_Contar_Tareas_Pendientes_FN</H3><PRE>          <B>FIDE_TAREAS_TB_Contar_Tareas_Pendientes_FN</B>( P_UPI IN FIDE_TAREAS_TB . UPI % TYPE ) RETURN NUMBER ; </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Eliminar_Tarea_SP"></A>
+<H3>FIDE_TAREAS_TB_Eliminar_Tarea_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Eliminar_Tarea_SP</B>( P_id_tarea IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16. Eliminar una tarea por Id<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Insertar_Tarea_SP"></A>
+<H3>FIDE_TAREAS_TB_Insertar_Tarea_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Insertar_Tarea_SP</B>( P_Id_Tarea IN INT , P_UPI IN NUMBER , P_Estado_Id IN INT , P_Nombre IN VARCHAR2 , P_Fecha_Recibido IN DATE , P_Descripcion IN VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Insertar una nueva tarea en la tabla TAREAS.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     - Recibe como parámetros los valores de cada columna de la tabla TAREAS y realiza<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     la inserción correspondiente, asignando la fecha de recepción actual.<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP"></A>
+<H3>FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP</B>( P_upi IN NUMBER ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22. Mostrar las tareas de los empleados<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Mostrar_Tarea_SP"></A>
+<H3>FIDE_TAREAS_TB_Mostrar_Tarea_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Mostrar_Tarea_SP</B>( P_id_tarea IN NUMBER , P_upi OUT NUMBER , P_nombre OUT VARCHAR2 , P_fecha_recibido OUT DATE , P_descripcion OUT VARCHAR2 ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7. Mostrar los datos de una tarea por Id<DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP"></A>
+<H3>FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP</B></PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21. Procedimiento que recorre todas las tareas pendientes (Estado_Id = 1) usando<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          un cursor explícito y muestra su información básica. <DD><DL></DL></DD></DL><HR><A NAME="FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP"></A>
+<H3>FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP</H3><PRE>          <B>FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP</B>( P_estado_id IN INT ) </PRE><DL>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 20. Procedimiento para recorrer todas las tareas con un estado específico<DD><DL></DL></DD></DL><HR><TABLE CELLSPACING="0" CELLPADDING="1" WIDTH="100%" BORDER="0">
+<TR><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2">      SUMMARY:  <A HREF="#field_summary">FIELD</A> | <A HREF="#type_summary">TYPE</A> | <A HREF="#method_summary">METHOD</A></FONT></TD><TD CLASS="NavBarRow3" VALIGN="top"><FONT SIZE="-2"></TR></TABLE></div>
+</div>
+<div id="Master.1">
+<div class="masterreport">
+<table id="Table.0" cellpadding="0" cellspacing="0" summary="">
+<th>NAME</th>
+<th>VALUE</th>
+</tr>
+<tr>
+<td>OWNER</td>
+<td>ABBOTT</td>
+</tr>
+<tr>
+<td>OBJECT_NAME</td>
+<td>FIDE_PROYECTO_FINAL_PKG</td>
+</tr>
+<tr>
+<td>SUBOBJECT_NAME</td>
+<td>null</td>
+</tr>
+<tr>
+<td>OBJECT_ID</td>
+<td>90827</td>
+</tr>
+<tr>
+<td>DATA_OBJECT_ID</td>
+<td>null</td>
+</tr>
+<tr>
+<td>OBJECT_TYPE</td>
+<td>PACKAGE</td>
+</tr>
+<tr>
+<td>CREATED</td>
+<td>24/04/25</td>
+</tr>
+<tr>
+<td>LAST_DDL_TIME</td>
+<td>24/04/25</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>2025-04-24:23:17:52</td>
+</tr>
+<tr>
+<td>STATUS</td>
+<td>VALID</td>
+</tr>
+<tr>
+<td>TEMPORARY</td>
+<td>N</td>
+</tr>
+<tr>
+<td>GENERATED</td>
+<td>N</td>
+</tr>
+<tr>
+<td>SECONDARY</td>
+<td>N</td>
+</tr>
+<tr>
+<td>NAMESPACE</td>
+<td>1</td>
+</tr>
+<tr>
+<td>EDITION_NAME</td>
+<td>null</td>
+</tr>
+<tr>
+<td>SHARING</td>
+<td>NONE</td>
+</tr>
+<tr>
+<td>EDITIONABLE</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>ORACLE_MAINTAINED</td>
+<td>N</td>
+</tr>
+<tr>
+<td>APPLICATION</td>
+<td>N</td>
+</tr>
+<tr>
+<td>DEFAULT_COLLATION</td>
+<td>USING_NLS_COMP</td>
+</tr>
+<tr>
+<td>DUPLICATED</td>
+<td>N</td>
+</tr>
+<tr>
+<td>SHARDED</td>
+<td>N</td>
+</tr>
+<tr>
+<td>IMPORTED_OBJECT</td>
+<td>N</td>
+</tr>
+<tr>
+<td>CREATED_APPID</td>
+<td>null</td>
+</tr>
+<tr>
+<td>CREATED_VSNID</td>
+<td>null</td>
+</tr>
+<tr>
+<td>MODIFIED_APPID</td>
+<td>null</td>
+</tr>
+<tr>
+<td>MODIFIED_VSNID</td>
+<td>null</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="Master.2">
+<div class="masterreport">
+<table id="Table.1" cellpadding="0" cellspacing="0" summary="">
+<tr>
+<th>PRIVILEGE</th>
+<th>GRANTEE</th>
+<th>GRANTABLE</th>
+<th>GRANTOR</th>
+<th>OBJECT_NAME</th>
+</tr>
+</table>
+</div>
+</div>
+<div id="Master.3">
+<div class="masterreport">
+<table id="Table.2" cellpadding="0" cellspacing="0" summary="">
+<tr>
+<th>NAME</th>
+<th>OWNER</th>
+<th>TYPE</th>
+<th>OBJECT_ID</th>
+<th>STATUS</th>
+<th>TYPE_LINK</th>
+</tr>
+</table>
+</div>
+</div>
+<div id="Master.4">
+<div class="masterreport">
+<table id="Table.3" cellpadding="0" cellspacing="0" summary="">
+<tr>
+<th>NAME</th>
+<th>OWNER</th>
+<th>TYPE</th>
+<th>OBJECT_ID</th>
+<th>STATUS</th>
+<th>TYPE_LINK</th>
+</tr>
+</table>
+</div>
+</div>
+<div id="Master.5">
+<div class="masterreport">
+<pre>
+PACKAGE FIDE_PROYECTO_FINAL_PKG AS
+
+--================================ FUNCIONES =================================--
+  -- FUNCION CON ESTADO
+  FUNCTION FIDE_ESTADO_TB_Obtener_Descripcion_Estado_FN (
+    P_Estado_Id IN FIDE_ESTADO_TB.Estado_Id%TYPE
+  ) RETURN VARCHAR2;
+
+  -- FUNCIONES CON MATERIALES Y BODEGAS
+  FUNCTION FIDE_MATERIALES_TB_Obtener_Nombre_Material_FN (
+    P_Id_Material IN FIDE_MATERIALES_TB.Id_Material%TYPE
+  ) RETURN VARCHAR2;
+
+  FUNCTION FIDE_MATERIALES_TB_Calcular_Total_Materiales_Disponible_FN
+  RETURN NUMBER;
+
+  FUNCTION FIDE_BODEGAS_TB_Contar_Materiales_Bodega_FN (
+    P_Bodega_Id IN FIDE_BODEGAS_TB.Bodega_Id%TYPE
+  ) RETURN NUMBER;
+
+  FUNCTION FIDE_BODEGA_MATERIAL_TB_Material_Disponible_Bodega_FN (
+    P_Bodega_Id IN FIDE_BODEGAS_TB.Bodega_Id%TYPE,
+    P_Id_Material IN FIDE_MATERIALES_TB.Id_Material%TYPE
+  ) RETURN BOOLEAN;
+
+  FUNCTION FIDE_BODEGAS_TB_Obtener_Nombre_Bodega_FN (
+    P_Bodega_Id IN FIDE_BODEGAS_TB.Bodega_Id%TYPE
+  ) RETURN VARCHAR2;
+
+  FUNCTION FIDE_BODEGAS_TB_Calcular_Stock_Total_Bodega_FN (
+    P_Bodega_Id IN FIDE_BODEGAS_TB.Bodega_Id%TYPE
+  ) RETURN NUMBER;
+
+  -- FUNCIONES CON PERSONAL Y TAREAS
+  FUNCTION FIDE_PERSONAL_TB_Obtener_Nombre_Empleado_FN (
+    P_UPI IN FIDE_PERSONAL_TB.UPI%TYPE
+  ) RETURN VARCHAR2;
+
+  FUNCTION FIDE_TAREAS_TB_Contar_Tareas_Pendientes_FN (
+    P_UPI IN FIDE_TAREAS_TB.UPI%TYPE
+  ) RETURN NUMBER;
+
+  FUNCTION FIDE_INVENTARIO_TB_Obtener_Responsable_Inventario_FN (
+    P_Id_Inventario IN FIDE_INVENTARIO_TB.Id_Inventario%TYPE
+  ) RETURN VARCHAR2;
+
+  -- FUNCIONES CON ENTREGAS E INGRESOS
+  FUNCTION FIDE_ENTREGAS_TB_Calcular_Cantidad_Restante_Entregas_FN (
+    P_Id_Entrega IN FIDE_ENTREGAS_TB.Id_Entrega%TYPE
+  ) RETURN NUMBER;
+
+  FUNCTION FIDE_DATOS_ENTREGAS_TB_Obtener_FechaHora_Entrega_FN (
+    P_Dato_Entrega_Id IN FIDE_DATOS_ENTREGAS_TB.Dato_Entrega_Id%TYPE
+  ) RETURN TIMESTAMP;
+
+  FUNCTION FIDE_INGRESOS_TB_Obtener_Fecha_Ingreso_Material_FN (
+    P_Id_Ingreso IN FIDE_INGRESOS_TB.Id_Ingreso%TYPE
+  ) RETURN DATE;
+
+  -- FUNCIONES CON ROLES Y AREAS
+  FUNCTION FIDE_ROLES_TB_Obtener_TipoRol_Personal_FN (
+    P_Id_Rol IN FIDE_ROLES_TB.Id_Rol%TYPE
+  ) RETURN VARCHAR2;
+
+  FUNCTION FIDE_AREAS_TB_Obtener_Nombre_Area_FN (
+    P_Area_Id IN FIDE_AREAS_TB.Area_Id%TYPE
+  ) RETURN VARCHAR2;
+
+
+
+--============================== PROCEDIMIENTOS ==============================--
+
+  -- CREATE / INSERT / REGISTRAR
+  -- 1. Registrar un nuevo personal
+  PROCEDURE FIDE_PERSONAL_TB_Registrar_Personal_SP (
+    P_Id_Personal      IN  NUMBER,
+    P_Id_Rol           IN  NUMBER,
+    P_Id_Entrega       IN  NUMBER,
+    P_Horario_Id       IN  NUMBER,
+    P_Estado_Id        IN  NUMBER,
+    P_Tipo_Personal    IN  VARCHAR2,
+    P_Nombre           IN  VARCHAR2,
+    P_Apellidos        IN  VARCHAR2,
+    P_Datos_Contacto   IN  VARCHAR2,
+    P_Linea_Trabajo    IN  VARCHAR2,
+    P_Id_Usuario       IN  NUMBER DEFAULT NULL,
+    P_UPI              IN  NUMBER DEFAULT NULL
+  );
+
+  /* 2. Insertar una nueva tarea en la tabla TAREAS.
+     - Recibe como parámetros los valores de cada columna de la tabla TAREAS y realiza
+     la inserción correspondiente, asignando la fecha de recepción actual.*/
+  PROCEDURE FIDE_TAREAS_TB_Insertar_Tarea_SP (
+    P_Id_Tarea       IN  INT,
+    P_UPI            IN  NUMBER,
+    P_Estado_Id      IN  INT,
+    P_Nombre         IN  VARCHAR2,
+    P_Fecha_Recibido IN  DATE,
+    P_Descripcion    IN  VARCHAR2
+  );
+
+  -- 3. Registrar un nuevo ingreso de material
+  PROCEDURE FIDE_INGRESOS_TB_Registrar_Ingreso_SP (
+    P_Id_Ingreso        IN  NUMBER,
+    P_Id_Material       IN  NUMBER,
+    P_UPI               IN  NUMBER,
+    P_Estado_Id         IN  NUMBER,
+    P_Cantidad_Recibida IN  NUMBER,
+    P_Fecha_Ingreso     IN  DATE
+  );
+
+  -- 4. Registrar un nuevo reporte
+  PROCEDURE FIDE_REPORTES_TB_Registrar_Reporte_SP (
+    P_Id_Reporte    IN  NUMBER,
+    P_Id_Usuario    IN  NUMBER,
+    P_Id_Inventario IN  NUMBER,
+    P_Id_Registro   IN  NUMBER,
+    P_Estado_Id     IN  NUMBER,
+    P_Descripcion   IN  VARCHAR2
+  );
+
+  -- READ / MOSTRAR / LISTAR
+  -- 5. Mostrar material por ID
+  PROCEDURE FIDE_MATERIALES_TB_Mostrar_Material_SP (
+    P_id_material       IN   NUMBER,
+    P_nombre            OUT  VARCHAR2,
+    P_fecha_vencimiento OUT  DATE,
+    P_cantidad_disponible OUT  NUMBER,
+    P_cantidad_solicitada OUT  NUMBER
+  );
+
+  -- 6. Procedimiento para verificar si hay suficiente material ingresado
+  PROCEDURE FIDE_INGRESOS_TB_Verificar_Material_Suficiente_SP (
+    P_id_material    IN   INT,
+    P_ultima_cantidad IN   INT,
+    P_suficiente     OUT  VARCHAR2
+  );
+
+  -- 7. Mostrar los datos de una tarea por Id
+  PROCEDURE FIDE_TAREAS_TB_Mostrar_Tarea_SP (
+    P_id_tarea       IN   NUMBER,
+    P_upi            OUT  NUMBER,
+    P_nombre         OUT  VARCHAR2,
+    P_fecha_recibido OUT  DATE,
+    P_descripcion    OUT  VARCHAR2
+  );
+
+  -- UPDATE / MODIFICAR / ACTUALIZAR
+  /* 8. Procedimiento que permite aumentar la cantidad disponible de un material específico.
+     - Se utiliza para actualizar el stock cuando se recibe nuevo material. */
+  PROCEDURE FIDE_MATERIALES_TB_Aumentar_Cantidad_Material_SP (
+    P_id_material       IN  INT,
+    P_cantidad_a_agregar IN  INT
+  );
+
+  -- 9. Procedimiento para actualizar el stock de una bodega en la tabla BODEGAS
+  -- Recibe el ID de la bodega y el nuevo valor de stock
+  PROCEDURE FIDE_BODEGAS_TB_Actualizar_Stock_Bodega_SP (
+    P_bodega_id    IN  FIDE_BODEGAS_TB.bodega_id%TYPE,
+    P_nuevo_stock  IN  FIDE_BODEGAS_TB.stock%TYPE
+  );
+
+  -- 10. Actualizar datos de contacto de un empleado
+  PROCEDURE FIDE_PERSONAL_TB_Actualizar_Rol_Empleado_SP (
+    P_upi          IN  NUMBER,
+    P_nuevo_rol_id IN  NUMBER
+  );
+
+  -- 11. Actualizar el horario del empleado
+  PROCEDURE FIDE_PERSONAL_TB_Actualizar_Horario_Empleado_SP (
+    P_id_personal    IN  NUMBER,
+    P_nuevo_horario_id IN  NUMBER
+  );
+
+  -- 12. Actualizar estado de los ingresos
+  PROCEDURE FIDE_INGRESOS_TB_Actualizar_Estado_Ingreso_SP (
+    P_id_ingreso    IN  NUMBER,
+    P_nuevo_estado_id IN  NUMBER
+  );
+
+  -- 13. Actualizar descripcion de un reporte
+  PROCEDURE FIDE_REPORTES_TB_Actualizar_Descripcion_Reporte_SP (
+    P_id_reporte      IN  NUMBER,
+    P_nueva_descripcion IN  VARCHAR2
+  );
+
+  -- 14. Actualizar estado del reporte
+  PROCEDURE FIDE_REPORTES_TB_Actualizar_Estado_Reporte_SP (
+    P_id_reporte      IN  NUMBER,
+    P_nuevo_estado_id IN  NUMBER
+  );
+
+  -- DELETE / ELIMINAR
+  -- 15. Eliminar un Material por Id
+  PROCEDURE FIDE_MATERIALES_TB_Eliminar_Material_SP (
+    P_id_material IN NUMBER
+  );
+
+  -- 16. Eliminar una tarea por Id
+  PROCEDURE FIDE_TAREAS_TB_Eliminar_Tarea_SP (
+    P_id_tarea IN NUMBER
+  );
+
+
+--======================= PROCEDIMIENTOS CON CURSORES ========================--
+
+  -- CREATE / INSERT / REGISTRAR
+  -- 17. Insercion de un nuevo registro diario
+  PROCEDURE FIDE_REGISTRO_DIARIO_TB_Insertar_Registro_Diario_SP (
+    P_id_entrega  IN  FIDE_REGISTRO_DIARIO_TB.id_entrega%TYPE,
+    P_id_ingreso  IN  FIDE_REGISTRO_DIARIO_TB.id_ingreso%TYPE,
+    P_id_tarea    IN  FIDE_REGISTRO_DIARIO_TB.id_tarea%TYPE,
+    P_estado_id   IN  FIDE_REGISTRO_DIARIO_TB.estado_id%TYPE
+  );
+
+  -- READ / MOSTRAR / LISTAR
+  -- 18. Listar los empleados
+  PROCEDURE FIDE_PERSONAL_TB_Listar_Empleados_SP;
+
+  /*
+  -- 19. Mostrar los materiales con stock bajo
+    - Procedimiento que recorre los materiales con bajo stock (&lt;=10 unidades) usando
+    un cursor explícito para mostrar Id_Material, Nombre y Cantidad_Disponible
+  */
+  PROCEDURE FIDE_MATERIALES_TB_Mostrar_Materiales_Bajo_Stock_SP;
+
+  -- 20. Procedimiento para recorrer todas las tareas con un estado específico
+  PROCEDURE FIDE_TAREAS_TB_Procesar_Tareas_Estado_SP (
+    P_estado_id IN INT
+  );
+
+  /* 21. Procedimiento que recorre todas las tareas pendientes (Estado_Id = 1) usando
+          un cursor explícito y muestra su información básica. */
+  PROCEDURE FIDE_TAREAS_TB_Mostrar_Tareas_Pendientes_SP;
+
+  -- 22. Mostrar las tareas de los empleados
+  PROCEDURE FIDE_TAREAS_TB_Listar_Tareas_Por_Empleado_SP (
+    P_upi IN NUMBER
+  );
+
+  -- 23. Listar las entregas por destinatario
+  PROCEDURE FIDE_ENTREGAS_TB_Listar_Entregas_Por_Destinatario_SP (
+    P_destinatario IN VARCHAR2
+  );
+
+  -- 24. Listar ingresos por fechas
+  PROCEDURE FIDE_INGRESOS_TB_Listar_Ingresos_Por_Fecha_SP (
+    P_fecha_inicio  IN  DATE,
+    P_fecha_fin     IN  DATE
+  );
+
+  -- 25. Procedimiento que recorre los reportes de un estado específico y muestra su información
+  PROCEDURE FIDE_REPORTES_TB_Mostrar_Reportes_Por_Estado_SP (
+    P_estado_id IN INT
+  );
+
+  -- UPDATE / MODIFICAR / ACTUALIZAR
+  -- 26. Actualizar datos de contacto del personal
+  PROCEDURE FIDE_PERSONAL_TB_Actualizar_Contacto_Personal_SP (
+    p_tipo                    IN  VARCHAR2,
+    p_nuevos_datos_contacto IN  VARCHAR2
+  );
+
+  -- 27. Actualizar el estado de las tareas a 'EN PROCESO'
+  PROCEDURE FIDE_TAREAS_TB_Actualizar_Tareas_En_Proceso_SP;
+
+  -- 28. Actualizar el estado de las tareas a 'COMPLETADA'
+  PROCEDURE FIDE_TAREAS_TB_Actualizar_Tareas_Completadas_SP;
+
+  -- 29. Actualizar el estado del material con stock bajo
+  PROCEDURE FIDE_MATERIALES_TB_Actualizar_Estado_Material_Bajo_Stock_SP;
+
+  -- GENERAR
+  -- 30. Generacion de alertas de stock bajo
+  PROCEDURE FIDE_INVENTARIO_TB_Generar_Alertas_Stock_SP;
+
+  -- ASIGNAR
+  -- 31. Asignacion de las tareas pendientes a los empleados segun la linea de trabajo
+  PROCEDURE FIDE_TAREAS_TB_Asignar_Tareas_Empleados_SP;
+
+  -- 32. Asignacion de un material a una bodega en especifico
+  PROCEDURE FIDE_BODEGA_MATERIAL_TB_Asignar_Material_Bodega_SP (
+    p_bodega_id   IN  FIDE_BODEGA_MATERIAL_TB.bodega_id%TYPE,
+    p_id_material IN  FIDE_BODEGA_MATERIAL_TB.id_material%TYPE
+  );
+
+
+END FIDE_PROYECTO_FINAL_PKG;
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>
